@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.carousel-container {
+  width: 100%;
+  margin: 50px auto;
+  position: relative;
+}
+@media (max-width: 768px) {
+  .carousel-container {
+    width: 95%;
+  }
+}
+.inner-carousel {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+.track {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  transition: transform 0.2s ease-in-out;
+}
+.card-container {
+  width: 275px;
+  height: 400px;
+  flex-shrink: 0;
+  padding-right: 10px;
+}
+@media (max-width: 768px) {
+  .card-container {
+    width: 184px;
+  }
+}
+.card {
+  height: 100%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.carousel-container2 {
+  width: 100%;
+  margin: 50px auto;
+  position: relative;
+}
+@media (max-width: 768px) {
+  .carousel-container2 {
+    width: 95%;
+  }
+}
+.inner-carousel2 {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+.track2 {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  transition: transform 0.2s ease-in-out;
+}
+.card-container2 {
+  width: 275px;
+  height: 400px;
+  flex-shrink: 0;
+  padding-right: 10px;
+}
+@media (max-width: 768px) {
+  .card-container2 {
+    width: 184px;
+  }
+}
+.card2 {
+  height: 100%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}

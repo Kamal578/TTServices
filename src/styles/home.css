@@ -526,58 +526,110 @@ nav {
     border-radius: 10%;
 }
 
-@media screen and (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
+.values {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+    padding: 0 20px;
+    margin-bottom: 3rem;
+}
 
-  .language-selector {
-    margin-right: 0;
-  }
+.value{
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+}
 
-  .contact-button {
-    display: none;
-  }
+.value > p {
+    font-family: var(--Exo);
+    font-weight: bold;
+    color: var(--ttservicesDark);
+    font-size: 1rem;
+    text-align: center; 
+}
 
-  .burger {
-    display: block;
-  }
-
-  .nav-active {
+.trustingPartners{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #6a68ad;
-    z-index: 1;
-    opacity: 0.9;
-  }
-
-  .nav-active li {
-    opacity: 0;
-  }
-
-  .nav-active li a {
-    font-size: 30px;
-    opacity: 1;
-    color: #fff;
-    margin-bottom: 30px;
-  }
-
-  .burger.active .line:nth-child(2) {
-    opacity: 0;
-  }
-
-  .burger.active .line:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-  }
-
-  .burger.active .line:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
-  }
+    gap: 10px;
 }
+
+.trustingPartners > h1{
+    font-family: var(--Exo);
+    font-weight: bold;
+    color: var(--ttservicesDark);
+    font-size: 3rem;
+    text-align: center;
+}
+
+.trustingPartners > h2{
+  font-family: var(--Exo);
+  font-weight: normal;
+  color: var(--ttservicesDark);
+  font-size: 2rem;
+  text-align: center;
+}
+
+.trustingPartners > button{
+    text-decoration: none;
+    font-family: var(--Exo);
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    background-color: var(--ttservicesDark);
+    border: 1px solid var(--ttservicesDark);
+    border-radius: 5px;
+    padding: 2%;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.trustingPartners > button:hover{
+    background-color: var(--ttservices);
+    border:  1px solid var(--ttservices);
+}
+
+.mapouter {
+  position: relative;
+  text-align: right;
+  height: 50vh;
+  width: 100%;
+}
+
+.mapouter > .seeOnMap {
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  font: var(--Inter);
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  background-color: var(--ttservicesDark);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.mapouter > .seeOnMap:hover {
+  background-color: var(--ttservices);
+}
+
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+  height: 100%;
+  width: 100%;
+}
+
+
+
