@@ -1,3 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;800;900&display=swap");
+
+:root {
+  --ttservices: #6a68ad;
+  --ttservicesDark: #42406d;
+  --ttServisesLight: #d6d5ef;
+  --Inter: "Inter", sans-serif;
+  --Exo: "Exo 2", sans-serif;
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,6 +27,9 @@
 @media (max-width: 768px) {
   .carousel-container {
     width: 95%;
+  }
+  .carousel-container > .card {
+    width: 25%;
   }
 }
 .inner-carousel {
@@ -81,4 +100,42 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.trustingPartners{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.trustingPartners > h1{
+  font-family: var(--Exo);
+  font-weight: bold;
+  color: var(--ttservicesDark);
+  font-size: 3rem;
+  text-align: center;
+}
+
+.trustingPartners > h2{
+font-family: var(--Exo);
+font-weight: normal;
+color: var(--ttservicesDark);
+font-size: 2rem;
+text-align: center;
+}
+
+.trustingPartners > button{
+  text-decoration: none;
+  font-family: var(--Exo);
+  font-weight: bold;
+  color: #fff;
+  font-size: 1.5rem;
+  text-align: center;
+  background-color: var(--ttservicesDark);
+  border: 1px solid var(--ttservicesDark);
+  border-radius: 5px;
+  padding: 2%;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }

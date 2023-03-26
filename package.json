@@ -1,0 +1,14 @@
+{
+  "name": "tailwind-ttservices",
+  "version": "1.0.0",
+  "description": "TTServices",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kamal Ahmadov",
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^3.2.7"
+  }
+}

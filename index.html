@@ -4,514 +4,1567 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TTServices - Homepage</title>
-    <link rel="stylesheet" href="src/styles/home.css" />
-    <link rel="stylesheet" href="src/styles/carousel.css" />
-    <link rel="stylesheet" href="src/styles/layout.css" />
+    <title>TTServices - Home</title>
+    <link rel="stylesheet" href="dist/output.css" />
   </head>
-  <body>
-    <nav>
-      <div class="logo">
-        <img src="src/img/ttservices.png" alt="Logo" />
+  <body x-data="{isOpen: false}" class="bg-white">
+    <nav
+      class="relative px-4 py-4 flex justify-between items-center bg-ttservices font-Inter text-2xl"
+    >
+      <a class="leading-none" href="/">
+        <img src="src/img/ttservices.png" alt="Logo" class="w-32" />
+      </a>
+      <div class="lg:hidden">
+        <button class="navbar-burger flex items-center text-white p-3">
+          <svg
+            class="block h-4 w-4 fill-current"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Mobile menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+          </svg>
+        </button>
       </div>
-      <ul class="nav-links">
-        <li><a href="#">Главная</a></li>
-        <li><a href="#">О нас</a></li>
-        <li><a href="#">Услуги</a></li>
+      <ul
+        class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6"
+      >
+        <li>
+          <a class="text-lg text-white hover:border-b-4 transition-all" href="#"
+            >Главная</a
+          >
+        </li>
+        <li>
+          <a class="text-lg text-white hover:border-b-4 transition-all" href="#"
+            >О нас</a
+          >
+        </li>
+        <li>
+          <a class="text-lg text-white hover:border-b-4 transition-all" href="#"
+            >Услуги</a
+          >
+        </li>
+		
+        <!--language dropdown-->
+        <div class="relative inline-block text-left">
+          <div>
+            <button
+              type="button"
+              class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+              id="menu-button"
+              aria-expanded="true"
+              aria-haspopup="true"
+            >
+              Язык
+              <svg
+                class="-mr-1 h-5 w-5 text-gray-400"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!--
+				  Dropdown menu, show/hide based on menu state.
+			  
+				  Entering: "transition ease-out duration-100"
+					From: "transform opacity-0 scale-95"
+					To: "transform opacity-100 scale-100"
+				  Leaving: "transition ease-in duration-75"
+					From: "transform opacity-100 scale-100"
+					To: "transform opacity-0 scale-95"
+				-->
+          <div
+            class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden"
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="menu-button"
+            tabindex="-1"
+          >
+            <div class="py-1" role="none">
+              <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+              <a
+                href="#"
+                class="text-gray-700 block px-4 py-2 text-sm"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-0"
+                >RU</a
+              >
+              <a
+                href="#"
+                class="text-gray-700 block px-4 py-2 text-sm"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-1"
+                >AZ</a
+              >
+              <a
+                href="#"
+                class="text-gray-700 block px-4 py-2 text-sm"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-2"
+                >EN</a
+              >
+            </div>
+          </div>
+        </div>
       </ul>
-      <div class="language-selector">
-        <select>
-          <option value="ru">RU</option>
-          <option value="en">EN</option>
-          <option value="az">AZ</option>
-        </select>
-      </div>
-      <div class="contact-button">
-        <a href="#">Контакты</a>
-      </div>
+      <button
+        class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-ttservicesDark hover:bg-ttservicesLight hover:text-black text-lg text-white font-bold rounded-xl transition duration-200"
+        x-on:click="isOpen = true"
+      >
+        Контакты
+      </button>
     </nav>
-    <div class="hero">
-      <div class="hero-text">
-        <h1>Передвигайтесь с комфортом и уверенностью</h1>
-        <p>Надежный транспорт и высокое качество обслуживания</p>
-        <a href="#">Связаться с нами </a>
+    <!--mobile menu-->
+    <div class="navbar-menu relative z-50 hidden transition-all">
+      <div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+      <nav
+        class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto"
+      >
+        <div class="flex items-center mb-8">
+          <a class="mr-auto text-3xl font-bold leading-none" href="#">
+			<img
+			  class="h-12 w-auto"
+			  src="src/img/ttservices.png"
+			  alt="Workflow"
+			/>
+          </a>
+          <button class="navbar-close">
+            <svg
+              class="h-6 w-6 text-white cursor-pointer hover:text-gray-500"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div>
+          <ul>
+            <li class="mb-1">
+              <a
+                class="block p-4 text-sm font-semibold text-ttservices hover:bg-blue-50 hover:text-blue-600 rounded"
+                href="#"
+                >Главная</a
+              >
+            </li>
+            <li class="mb-1">
+              <a
+                class="block p-4 text-sm font-semibold text-ttservices hover:bg-blue-50 hover:text-blue-600 rounded"
+                href="#"
+                >О нас	</a
+              >
+            </li>
+            <li class="mb-1">
+              <a
+                class="block p-4 text-sm font-semibold text-ttservices hover:bg-blue-50 hover:text-blue-600 rounded"
+                href="#"
+                >Услуги</a
+              >
+            </li>
+            <li class="mb-1">
+				<div class="relative inline-block text-left">
+					<div>
+					  <button
+						type="button"
+						class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+						id="menu-button"
+						aria-expanded="true"
+						aria-haspopup="true"
+					  >
+						Язык
+						<svg
+						  class="-mr-1 h-5 w-5 text-gray-400"
+						  viewBox="0 0 20 20"
+						  fill="currentColor"
+						  aria-hidden="true"
+						>
+						  <path
+							fill-rule="evenodd"
+							d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+							clip-rule="evenodd"
+						  />
+						</svg>
+					  </button>
+					</div>
+		  
+					<!--
+							Dropdown menu, show/hide based on menu state.
+						
+							Entering: "transition ease-out duration-100"
+							  From: "transform opacity-0 scale-95"
+							  To: "transform opacity-100 scale-100"
+							Leaving: "transition ease-in duration-75"
+							  From: "transform opacity-100 scale-100"
+							  To: "transform opacity-0 scale-95"
+						  -->
+					<div
+					  class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden"
+					  role="menu"
+					  aria-orientation="vertical"
+					  aria-labelledby="menu-button"
+					  tabindex="-1"
+					>
+					  <div class="py-1" role="none">
+						<!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+						<a
+						  href="#"
+						  class="text-gray-700 block px-4 py-2 text-sm"
+						  role="menuitem"
+						  tabindex="-1"
+						  id="menu-item-0"
+						  >RU</a
+						>
+						<a
+						  href="#"
+						  class="text-gray-700 block px-4 py-2 text-sm"
+						  role="menuitem"
+						  tabindex="-1"
+						  id="menu-item-1"
+						  >AZ</a
+						>
+						<a
+						  href="#"
+						  class="text-gray-700 block px-4 py-2 text-sm"
+						  role="menuitem"
+						  tabindex="-1"
+						  id="menu-item-2"
+						  >EN</a
+						>
+					  </div>
+					</div>
+				  </div>
+            </li>
+          </ul>
+        </div>
+        <div class="mt-auto">
+          <div class="pt-6">
+            <a
+              class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-ttservicesDark hover:bg-ttservicesLight rounded-xl"
+              href="#"
+              >Контакты</a
+            >
+          </div>
+          <p class="my-4 text-xs text-center text-white">
+            <span>Copyright © 2023</span>
+          </p>
+        </div>
+      </nav>
+    </div>
+    <div
+      class="hero bg-cover bg-center flex justify-center items-center h-screen px-2 font-Exo bg-[url('../src/img/heroBackground.png')]"
+    >
+      <div
+        class="hero-text max-w-5xl mx-auto md:max-w-lg md:ml-auto md:mr-5 text-left font-Exo"
+      >
+        <h1
+          class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 text-ttservicesDark"
+        >
+          Передвигайтесь с комфортом и уверенностью
+        </h1>
+        <p class="text-lg md:text-2xl mb-8 text-black">
+          Надежный транспорт и высокое качество обслуживания
+        </p>
+        <button
+          x-on:click="isOpen = true"
+          class="inline-block bg-ttservicesDark text-white font-bold py-4 px-8 rounded-lg text-lg md:text-xl transition duration-300 hover:bg-ttservices hover:text-white"
+        >
+          Связаться с нами
+        </button>
       </div>
     </div>
+
     <div class="ourServices">
-      <h1>Наши услуги</h1>
-      <div class="servicesContainer">
+      <h1 class="text-5xl font-bold text-ttservicesDark text-center font-Exo">
+        Наши услуги
+      </h1>
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mt-8 md:mt-12 px-4 xl:px-24 py-8 rounded-md bg-white"
+      >
         <!--Reusable Card, put in forEach-->
-        <div class="servicesContainerCard">
+        <div
+          class="flex flex-col items-baseline justify-between rounded-md shadow-md bg-white py-8 px-6 border-solid border-2 border-ttservicesDark"
+        >
           <div
-            class="servicesContainerCardImg"
-            style="background-image: url(src/img/businessTaxi.png)"
+            class="servicesContainerCardImg bg-[url('../src/img/businessTaxi.png')] w-full h-40 md:h-56 bg-cover bg-center rounded-t-md"
           ></div>
-          <h2>Business Taxi</h2>
-          <p>
+          <h2
+            class="text-2xl font-Exo font-bold text-ttservicesDark mt-6 text-left"
+          >
+            Business Taxi
+          </h2>
+          <p class="text-ttservicesDark text-left mt-4 font-Exo">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae
             officiis numquam in deserunt facere dolor placeat maxime veniam
             reprehenderit minus rem, illum ratione tempore. Impedit laborum
             distinctio ut quo accusantium!
           </p>
-          <a href="#">Подробнее</a>
+          <a
+            href="#"
+            class="inline-block bg-ttservicesDark text-white font-Exo text-sm rounded-full px-4 py-2 mt-4 mb-2 transition-colors duration-200 ease-in-out hover:bg-ttservices"
+            >Подробнее</a
+          >
         </div>
         <!--End of servicesContainerCard 1-->
 
-        <div class="servicesContainerCard">
+        <div
+          class="flex flex-col items-baseline justify-between rounded-md shadow-md bg-white py-8 px-6 border-solid border-2 border-ttservicesDark"
+        >
           <div
-            class="servicesContainerCardImg"
-            style="background-image: url(src/img/businessTaxi.png)"
+            class="servicesContainerCardImg bg-[url('../src/img/businessTaxi.png')] w-full h-40 md:h-56 bg-cover bg-center rounded-t-md"
           ></div>
-          <h2>Business Taxi</h2>
-          <p>
+          <h2
+            class="text-2xl font-Exo font-bold text-ttservicesDark mt-6 text-left"
+          >
+            Business Taxi
+          </h2>
+          <p class="text-ttservicesDark text-left mt-4 font-Exo">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae
             officiis numquam in deserunt facere dolor placeat maxime veniam
             reprehenderit minus rem, illum ratione tempore. Impedit laborum
             distinctio ut quo accusantium!
           </p>
-          <a href="#">Подробнее</a>
+          <a
+            href="#"
+            class="inline-block bg-ttservicesDark text-white font-Exo text-sm rounded-full px-4 py-2 mt-4 mb-2 transition-colors duration-200 ease-in-out hover:bg-ttservices"
+            >Подробнее</a
+          >
         </div>
         <!--End of servicesContainerCard 2-->
 
-        <div class="servicesContainerCard">
+        <div
+          class="flex flex-col items-baseline justify-between rounded-md shadow-md bg-white py-8 px-6 border-solid border-2 border-ttservicesDark"
+        >
           <div
-            class="servicesContainerCardImg"
-            style="background-image: url(src/img/businessTaxi.png)"
+            class="servicesContainerCardImg bg-[url('../src/img/businessTaxi.png')] w-full h-40 md:h-56 bg-cover bg-center rounded-t-md"
           ></div>
-          <h2>Business Taxi</h2>
-          <p>
+          <h2
+            class="text-2xl font-Exo font-bold text-ttservicesDark mt-6 text-left"
+          >
+            Business Taxi
+          </h2>
+          <p class="text-ttservicesDark text-left mt-4 font-Exo">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae
             officiis numquam in deserunt facere dolor placeat maxime veniam
             reprehenderit minus rem, illum ratione tempore. Impedit laborum
             distinctio ut quo accusantium!
           </p>
-          <a href="#">Подробнее</a>
+          <a
+            href="#"
+            class="inline-block bg-ttservicesDark text-white font-Exo text-sm rounded-full px-4 py-2 mt-4 mb-2 transition-colors duration-200 ease-in-out hover:bg-ttservices"
+            >Подробнее</a
+          >
         </div>
         <!--End of servicesContainerCard 3-->
-
-        <div class="servicesContainerCard">
+        <div
+          class="flex flex-col items-baseline justify-between rounded-md shadow-md bg-white py-8 px-6 border-solid border-2 border-ttservicesDark"
+        >
           <div
-            class="servicesContainerCardImg"
-            style="background-image: url(src/img/businessTaxi.png)"
+            class="servicesContainerCardImg bg-[url('../src/img/businessTaxi.png')] w-full h-40 md:h-56 bg-cover bg-center rounded-t-md"
           ></div>
-          <h2>Business Taxi</h2>
-          <p>
+          <h2
+            class="text-2xl font-Exo font-bold text-ttservicesDark mt-6 text-left"
+          >
+            Business Taxi
+          </h2>
+          <p class="text-ttservicesDark text-left mt-4 font-Exo">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae
             officiis numquam in deserunt facere dolor placeat maxime veniam
             reprehenderit minus rem, illum ratione tempore. Impedit laborum
             distinctio ut quo accusantium!
           </p>
-          <a href="#">Подробнее</a>
+          <a
+            href="#"
+            class="inline-block bg-ttservicesDark text-white font-Exo text-sm rounded-full px-4 py-2 mt-4 mb-2 transition-colors duration-200 ease-in-out hover:bg-ttservices"
+            >Подробнее</a
+          >
         </div>
         <!--End of servicesContainerCard 4-->
       </div>
-      <!--End of servicesContainer-->
-    </div>
-    <!--End of ourServices-->
-
-    <div class="quality">
-      <div class="qualityImg">
-        <img src="src/img/quality.png" alt="Quality" />
-      </div>
-      <div class="qualityText">
-        <div class="qualityTextMain">
-          <h1>
-            Качественные пассажирские перевозки - наша профессиональная
-            ответственность
-          </h1>
-          <p>
-            Компания "TT services" была основана в 2018 году командой
-            профессионалов с большим опытом в области пассажирских перевозок. За
-            прошедшие годы мы приняли участие в организации крупных,
-            общественно-культурных, спортивных и в других значимых мероприятиях
-            предоставляя различные транспортные услуги. Качество, надежность и
-            безопасность являются основными принципами нашей работы.
-          </p>
+      <div
+        class="quality flex flex-col gap-3 justify-around items-center my-4 md:flex-row"
+      >
+        <div class="qualityImg max-w-[90vw]">
+          <img src="src/img/quality.png" alt="Quality" />
         </div>
-        <a href="#">Читать Далее</a>
+        <div
+          class="qualityText flex flex-col justify-evenly h-full px-5 md:w-1/2"
+        >
+          <div class="qualityTextMain">
+            <h1
+              class="text-3xl font-bold text-ttservicesDark leading-tight md:text-4xl"
+            >
+              Качественные пассажирские перевозки - наша профессиональная
+              ответственность
+            </h1>
+            <p class="text-base font-normal text-black mt-4 md:text-lg">
+              Компания "TT services" была основана в 2018 году командой
+              профессионалов с большим опытом в области пассажирских перевозок.
+              За прошедшие годы мы приняли участие в организации крупных,
+              общественно-культурных, спортивных и в других значимых
+              мероприятиях предоставляя различные транспортные услуги. Качество,
+              надежность и безопасность являются основными принципами нашей
+              работы.
+            </p>
+          </div>
+          <a
+            href="#"
+            class="text-center w-40 ml-auto inline-block bg-ttservicesDark text-white py-3 px-4 rounded-lg text-lg md:py-4 md:px-5 md:text-xl md:rounded-full md:w-2/5 mt-4 md:mt-0 no-underline transition duration-200 ease-in-out hover:bg-ttservices"
+          >
+            Читать Далее
+          </a>
+        </div>
+        <!--End of qualityText-->
       </div>
-      <!--End of qualityText-->
+      <!--End of quality-->
     </div>
-    <!--End of quality-->
-    <div class="priorities">
-      <h1 class="prioritiesTitle">Наши приоритеты</h1>
-      <div class="prioritiesCardsContainer">
-        <div class="priorityCard">
-          <div class="priorityImg">
+    <div class="priorities px-4 sm:px-8 lg:px-16 font-Exo">
+      <h1
+        class="prioritiesTitle text-4xl sm:text-4xl font-bold text-ttservicesDark my-8 text-center"
+      >
+        Наши приоритеты
+      </h1>
+      <div
+        class="prioritiesCardsContainer grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+      >
+        <div
+          class="priorityCard flex flex-col items-center justify-center bg-white rounded-lg py-8 px-4"
+        >
+          <div class="priorityImg mb-4">
             <img src="src/img/security-official.png" alt="Quality" />
           </div>
-          <p>
+          <p class="text-lg sm:text-xl text-ttservicesDark text-center">
             Безопасность и комфорт пассажиров
           </p>
-        </div> <!--End of priorityCard 1-->
-        <div class="priorityCard">
-            <div class="priorityImg">
-              <img src="src/img/emergency-call.png" alt="Quality" />
-            </div>
-            <p>
-                Эффективная оценка рисков и меры по их устранению
-            </p>
-          </div> <!--End of priorityCard 2-->
-          <div class="priorityCard">
-            <div class="priorityImg">
-              <img src="src/img/azerbaijan.png" alt="Quality" />
-            </div>
-            <p>
-            Активное участие в восстановлении Карабаха
-            </p>
-          </div> <!--End of priorityCard 3-->
-          <div class="priorityCard">
-            <div class="priorityImg">
-              <img src="src/img/schedule.png" alt="Quality" />
-            </div>
-            <p>
-                Участие в крупномасштабных мероприятиях и проектах
-            </p>
-          </div> <!--End of priorityCard 4-->
-      </div> <!--End of prioritiesCardsContainer-->
-    </div> <!--End of priorities-->
-
-    <div class="autopark">
-        <div class="autoparkHeader">
-            <h1>Наш автопарк</h1>
-            <div class="autoparkHeaderButtonsContainer">
-                <a href="#" class="autoparkHeaderButton">Легковые</a>
-                <a href="#" class="autoparkHeaderButton">VANs</a>
-                <a href="#" class="autoparkHeaderButton">Автобусы</a>
-            </div>
-        </div> <!--End of autoparkHeader-->
-        <div class="autoparkCards">
-            <div class="autoparkCard">
-                <div class="autoparkCardImg" style="background-image: url(src/img/businessTaxi.png);">
-                </div>
-                <div class="autoparkCardText">
-                    <h2 class="carName">Toyota Camry</h2>
-                    <h2 class="carCategory">Econom Class</h2>
-                    <p class="carDescription">Описание машины и кнопока еще если текста много</p>
-                </div>
-                <div class="autoparkCardButtons">
-                    <a href="#" class="autoparkCardButton">
-                        Заказать
-                    </a>
-                    <a href="#" class="autoparkCardButton">
-                        Подробнее
-                    </a>
-                </div>
-            </div> <!--End of autoparkCard 1-->
-            <div class="autoparkCard">
-                <div class="autoparkCardImg" style="background-image: url(src/img/businessTaxi.png);">
-                </div>
-                <div class="autoparkCardText">
-                    <h2 class="carName">Toyota Camry</h2>
-                    <h2 class="carCategory">Econom Class</h2>
-                    <p class="carDescription">Описание машины и кнопока еще если текста много</p>
-                </div>
-                <div class="autoparkCardButtons">
-                    <a href="#" class="autoparkCardButton">
-                        Заказать
-                    </a>
-                    <a href="#" class="autoparkCardButton">
-                        Подробнее
-                    </a>
-                </div>
-            </div> <!--End of autoparkCard 2-->
-            <div class="autoparkCard">
-                <div class="autoparkCardImg" style="background-image: url(src/img/businessTaxi.png);">
-                </div>
-                <div class="autoparkCardText">
-                    <h2 class="carName">Toyota Camry</h2>
-                    <h2 class="carCategory">Econom Class</h2>
-                    <p class="carDescription">Описание машины и кнопока еще если текста много</p>
-                </div>
-                <div class="autoparkCardButtons">
-                    <a href="#" class="autoparkCardButton">
-                        Заказать
-                    </a>
-                    <a href="#" class="autoparkCardButton">
-                        Подробнее
-                    </a>
-                </div>
-            </div> <!--End of autoparkCard 3-->
-            <div class="autoparkCard">
-                <div class="autoparkCardImg" style="background-image: url(src/img/businessTaxi.png);">
-                </div>
-                <div class="autoparkCardText">
-                    <h2 class="carName">Toyota Camry</h2>
-                    <h2 class="carCategory">Econom Class</h2>
-                    <p class="carDescription">Описание машины и кнопока еще если текста много</p>
-                </div>
-                <div class="autoparkCardButtons">
-                    <a href="#" class="autoparkCardButton">
-                        Заказать
-                    </a>
-                    <a href="#" class="autoparkCardButton">
-                        Подробнее
-                    </a>
-                </div>
-            </div> <!--End of autoparkCard 4-->
-        </div> <!--End of autoparkCards-->
-    </div>
-    <div class="tours">
-        <div class="toursHeader">
-            <h1>Туры TT Services</h1>
-            <div class="toursHeaderButtonsContainer">
-                <a href="#" class="toursHeaderButton">Перейти</a>
-            </div>
-        </div> <!--End of toursHeader-->
-        <div class="toursCards">
-            <div class="toursCard">
-                <div class="toursCardImg" style="background-image: url(src/img/businessTaxi.png);">
-                </div>
-                <div class="toursCardText">
-                    <h2 class="carName">Toyota Camry</h2>
-                    <p class="carDescription">Описание машины и кнопока еще если текста много</p>
-                </div>
-                <div class="toursCardBottom">
-                    <p class="toursCardPrice">
-                        69$
-                    </p>
-                    <a href="#" class="toursCardButton">
-                        Подробнее
-                    </a>
-                </div>
-            </div> <!--End of toursCard 1-->
-            <div class="toursCard">
-                <div class="toursCardImg" style="background-image: url(src/img/businessTaxi.png);">
-                </div>
-                <div class="toursCardText">
-                    <h2 class="carName">Toyota Camry</h2>
-                    <p class="carDescription">Описание машины и кнопока еще если текста много</p>
-                </div>
-                <div class="toursCardBottom">
-                    <p class="toursCardPrice">
-                        69$
-                    </p>
-                    <a href="#" class="toursCardButton">
-                        Подробнее
-                    </a>
-                </div>
-            </div> <!--End of toursCard 2-->
-            <div class="toursCard">
-                <div class="toursCardImg" style="background-image: url(src/img/businessTaxi.png);">
-                </div>
-                <div class="toursCardText">
-                    <h2 class="carName">Toyota Camry</h2>
-                    <p class="carDescription">Описание машины и кнопока еще если текста много</p>
-                </div>
-                <div class="toursCardBottom">
-                    <p class="toursCardPrice">
-                        69$
-                    </p>
-                    <a href="#" class="toursCardButton">
-                        Подробнее
-                    </a>
-                </div>
-            </div> <!--End of toursCard 3-->
-            <div class="toursCard">
-                <div class="toursCardImg" style="background-image: url(src/img/businessTaxi.png);">
-                </div>
-                <div class="toursCardText">
-                    <h2 class="carName">Toyota Camry</h2>
-                    <p class="carDescription">Описание машины и кнопока еще если текста много</p>
-                </div>
-                <div class="toursCardBottom">
-                    <p class="toursCardPrice">
-                        69$
-                    </p>
-                    <a href="#" class="toursCardButton">
-                        Подробнее
-                    </a>
-                </div>
-            </div> <!--End of toursCard 4-->
-        </div> <!--End of toursCards-->
-    </div> <!--End of tours-->
-    <div class="values">
-        <div class="value">
-            <img src="src/img/magnifier.png" alt="Лупа">
-            <p>Внимание к деталям</p>
         </div>
-        <div class="value">
-            <img src="src/img/pricing.png" alt="Цены">
-            <p>Гибкая ценовая политика</p>  
-        </div>
-        <div class="value">
-            <img src="src/img/qualityCar.png" alt="Автомобиль">
-            <p>Высококачественные автомобили</p>
-        </div>
-        <div class="value">
-            <img src="src/img/drivers.png" alt="Сервис">
-            <p>Сертифицированные англоязычные водители</p>
-        </div>
-        <div class="value">
-            <img src="src/img/standard.png" alt="standard">
-            <p>Соответствие стандартам ОТ, ПБ и ООС </p>
-        </div>
-    </div> <!--End of values-->
-    <div class="trustingPartners">
-        <h1>Наши партнеры</h1>
-        <h2>Компании, которые нам доверяют</h2>
-        <div class="carousel-container">
-            <div class="inner-carousel">
-              <div class="track">
-                <div class="card-container">
-                  <div class="card" style="background-image: url(src/img/partner1.png);"></div>
-                </div>
-                <div class="card-container">
-                    <div class="card" style="background-image: url(src/img/partner2.png);"></div>
-                </div>
-                <div class="card-container">
-                    <div class="card" style="background-image: url(src/img/partner3.png);"></div>
-                </div>
-                <div class="card-container">
-                    <div class="card" style="background-image: url(src/img/partner1.png);"></div>
-                  </div>
-                  <div class="card-container">
-                      <div class="card" style="background-image: url(src/img/partner2.png);"></div>
-                  </div>
-                  <div class="card-container">
-                      <div class="card" style="background-image: url(src/img/partner3.png);"></div>
-                  </div>
-                  <div class="card-container">
-                    <div class="card" style="background-image: url(src/img/partner1.png);"></div>
-                  </div>
-                  <div class="card-container">
-                      <div class="card" style="background-image: url(src/img/partner2.png);"></div>
-                  </div>
-                  <div class="card-container">
-                      <div class="card" style="background-image: url(src/img/partner3.png);"></div>
-                  </div>
-                  <div class="card-container">
-                    <div class="card" style="background-image: url(src/img/partner1.png);"></div>
-                  </div>
-                  <div class="card-container">
-                      <div class="card" style="background-image: url(src/img/partner2.png);"></div>
-                  </div>
-                  <div class="card-container">
-                      <div class="card" style="background-image: url(src/img/partner3.png);"></div>
-                  </div>
-              </div>
-            </div>
-        </div>
-        <!-- <div class="carousel-container2">
-            <div class="inner-carousel2">
-              <div class="track2">
-                <div class="card-container2">
-                  <div class="card2" style="background-image: url(src/img/partner1.png);">1</div>
-                </div>
-                <div class="card-container2">
-                  <div class="card2" style="background-image: url(src/img/partner2.png);">2</div>
-                </div>
-                <div class="card-container2">
-                  <div class="card2" style="background-image: url(src/img/partner3.png);">3</div>
-                </div>
-                <div class="card-container2">
-                  <div class="card2" style="background-image: url(src/img/partner1.png);">4</div>
-                </div>
-                <div class="card-container2">
-                  <div class="card2" style="background-image: url(src/img/partner2.png);">5</div>
-                </div>
-                <div class="card-container2">
-                  <div class="card2" style="background-image: url(src/img/partner3.png);">6</div>
-                </div>
-                <div class="card-container2">
-                  <div class="card2" style="background-image: url(src/img/partner1.png);">7</div>
-                </div>
-                <div class="card-container2">
-                  <div class="card2" style="background-image: url(src/img/partner2.png);">8</div>
-                </div>
-                <div class="card-container2">
-                  <div class="card2" style="background-image: url(src/img/partner3.png);">9</div>
-                </div>
-                <div class="card-container2">
-                  <div class="card2" style="background-image: url(src/img/partner1.png);">10</div>
-                </div>
-                <div class="card-container2">
-                  <div class="card2" style="background-image: url(src/img/partner2.png);">11</div>
-                </div>
-                <div class="card-container2">
-                  <div class="card2" style="background-image: url(src/img/partner3.png);">12</div>
-                </div>
-              </div>
-            </div>
-          </div> -->
-          <button class="download">
-            Скачать рекомендационные письма
-          </button>
-        </div> <!--End of trustingPartners-->
-        <footer>
-          <!--google maps on the left-->
-          <div class="mapouter">
-            <div class="gmap_canvas">
-              <iframe
-                width="100%"
-                height="100%"
-                id="gmap_canvas"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.7309586574693!2d49.914081315351105!3d40.392655065027405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4030630f263f8597%3A0x42a5189df794320d!2sTT%20Car%20Service!5e0!3m2!1sru!2saz!4v1678290008909!5m2!1sru!2saz"
-                frameborder="0"
-                scrolling="no"
-                marginheight="0"
-                marginwidth="0"
-              ></iframe>
-            </div>
-            <a href="" class="seeOnMap"> Посмотреть на карте </a>
+        <!--End of priorityCard 1-->
+        <div
+          class="priorityCard flex flex-col items-center justify-center bg-white rounded-lg py-8 px-4"
+        >
+          <div class="priorityImg mb-4">
+            <img src="src/img/emergency-call.png" alt="Quality" />
           </div>
-          <div class="contacts">
-            <div class="images">
-              <div class="logo">
-                <img src="src/img/ttservices.png" alt="logo" />
-              </div>
-              <div class="socials">
-                <a href="" class="socials__item">
-                  <img src="src/img/social/insta.png" alt="instagram" />
-                </a>
-                <a href="" class="socials__item">
-                  <img src="src/img/social/fb.png" alt="facebook" />
-                </a>
-                <a href="" class="socials__item">
-                  <img src="src/img/social/wp.png" alt="whatsapp" />
-                </a>
-              </div>
+          <p class="text-lg sm:text-xl text-ttservicesDark text-center">
+            Эффективная оценка рисков и меры по их устранению
+          </p>
+        </div>
+        <!--End of priorityCard 2-->
+        <div
+          class="priorityCard flex flex-col items-center justify-center bg-white rounded-lg py-8 px-4"
+        >
+          <div class="priorityImg mb-4">
+            <img src="src/img/azerbaijan.png" alt="Quality" />
+          </div>
+          <p class="text-lg sm:text-xl text-ttservicesDark text-center">
+            Активное участие в восстановлении Карабаха
+          </p>
+        </div>
+        <!--End of priorityCard 3-->
+        <div
+          class="priorityCard flex flex-col items-center justify-center bg-white rounded-lg py-8 px-4"
+        >
+          <div class="priorityImg mb-4">
+            <img src="src/img/schedule.png" alt="Quality" />
+          </div>
+          <p class="text-lg sm:text-xl text-ttservicesDark text-center">
+            Участие в крупномасштабных мероприятиях и проектах
+          </p>
+        </div>
+        <!--End of priorityCard 4-->
+      </div>
+      <!--End of prioritiesCardsContainer-->
+    </div>
+    <!--End of priorities-->
+    <div
+      x-data="{ activeTab: 'tab1' }"
+      class="autopark bg-gray-100 py-10 font-Exo"
+    >
+      <div
+        class="autoparkHeader container mx-auto flex flex-col md:flex-row justify-between items-center mb-8"
+      >
+        <h1 class="text-3xl font-bold text-center md:text-left mb-4 md:mb-0">
+          Наш автопарк
+        </h1>
+        <div class="autoparkHeaderButtonsContainer flex flex-row gap-4">
+          <button
+            x-on:click="activeTab = 'tab1'"
+            :class="activeTab === 'tab1' ? 'bg-ttservicesDark text-white' : 'bg-white text-ttservicesDark hover:bg-ttservicesDark hover:text-white hover:scale-110'"
+            class="autoparkHeaderButton text-lg font-bold border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full transition-all"
+          >
+            Легковые
+          </button>
+          <button
+            x-on:click="activeTab = 'tab2'"
+            :class="activeTab === 'tab2' ? 'bg-ttservicesDark text-white' : 'bg-white text-ttservicesDark hover:bg-ttservicesDark hover:text-white hover:scale-110'"
+            class="autoparkHeaderButton text-lg font-bold border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full transition-all"
+          >
+            VANs
+          </button>
+          <button
+            x-on:click="activeTab = 'tab3'"
+            :class="activeTab === 'tab3' ? 'bg-ttservicesDark text-white' : 'bg-white text-ttservicesDark hover:bg-ttservicesDark hover:text-white hover:scale-110'"
+            class="autoparkHeaderButton text-lg font-bold border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full transition-all"
+          >
+            Автобусы
+          </button>
+        </div>
+      </div>
+      <!--End of autoparkHeader-->
+      <div
+        x-show="activeTab === 'tab1'"
+        class="autoparkCards container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+      >
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry tab1</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 1-->
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 2-->
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 3-->
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 4-->
+      </div>
+      <div
+        x-show="activeTab === 'tab2'"
+        class="autoparkCards container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+      >
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry tab2</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 1-->
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 2-->
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 3-->
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 4-->
+      </div>
+      <div
+        x-show="activeTab === 'tab3'"
+        class="autoparkCards container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+      >
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry tab3</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 1-->
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 2-->
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 3-->
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 4-->
+      </div>
+      <!--End of tab3-->
+      <div
+        x-show="isOpen"
+        class="fixed inset-0 z-50 overflow-y-auto"
+        aria-labelledby="modal-title"
+        role="dialog"
+        aria-modal="true"
+      >
+        <div
+          class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0"
+        >
+          <div
+            x-cloak
+            @click="isOpen = false"
+            x-show="isOpen"
+            x-transition:enter="transition ease-out duration-300 transform"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-200 transform"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40"
+            aria-hidden="true"
+          ></div>
+
+          <div
+            x-cloak
+            x-show="isOpen"
+            x-transition:enter="transition ease-out duration-300 transform"
+            x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+            x-transition:leave="transition ease-in duration-200 transform"
+            x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+            x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            class="inline-block w-full max-w-xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl 2xl:max-w-2xl"
+          >
+            <div class="flex items-center justify-between space-x-4">
+              <h1 class="text-xl font-bold text-ttservicesDark">
+                Заполните форму или свяжитесь любым удобным для Вас способом
+              </h1>
+
+              <button
+                @click="isOpen = false"
+                class="text-gray-600 focus:outline-none hover:text-gray-700"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </button>
             </div>
-            <div class="contactUsForm">
-              <div class="contactUsFormTitle">
-                <h2>Свяжитесь с нами</h2>
+
+            <form class="mt-5">
+              <div>
+                <input
+                  placeholder="Ваше имя"
+                  type="text"
+                  class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40"
+                />
               </div>
-              <div class="contactUsFormInputs">
-                <form action="">
-                  <div class="credentials">
-                    <input type="text" placeholder="Ваше имя" class="name" />
-                    <input
-                      type="text"
-                      placeholder="Ваш номер телефона"
-                      class="phoneNumber"
+
+              <div class="mt-4">
+                <input
+                  placeholder="Ваш e-mail/номер телефона"
+                  type="text"
+                  class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40"
+                />
+              </div>
+
+              <div class="mt-4">
+                <textarea
+                  placeholder="Ваше сообщение"
+                  type="text"
+                  rows="8"
+                  class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40"
+                ></textarea>
+              </div>
+
+              <div class="mt-4">
+                <h1 class="text-md font-medium text-black uppercase">Почта</h1>
+                <a
+                  href="mailto:info@ttservices.az"
+                  class="text-md font-medium text-ttservices"
+                >
+                  info@ttservices.az
+                </a>
+                <h1 class="text-md font-medium text-black uppercase">
+                  Телефон
+                </h1>
+                <a
+                  href="tel: +994 55 555 55 55"
+                  class="text-md font-medium text-ttservices"
+                >
+                  +994 55 555 55 55
+                </a>
+                <h1 class="text-md font-medium text-black uppercase">
+                  Мессенджер
+                </h1>
+                <a
+                  href="https://web.whatsapp.com/"
+                  class="text-md font-medium text-ttservices"
+                >
+                  WhatsApp
+                </a>
+              </div>
+
+              <div class="flex justify-end mt-6">
+                <button
+                  type="button"
+                  class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-md dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50"
+                >
+                  Invite Member
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End of autopark-->
+    <div class="tours flex flex-col items-center justify-evenly gap-10">
+      <div
+        class="toursHeader w-89 container mx-auto flex flex-col md:flex-row justify-between items-center mb-2"
+      >
+        <h1 class="font-Exo font-bold text-ttservicesDark text-3xl text-center">
+          Туры TT Services
+        </h1>
+        <div
+          class="toursHeaderButtonsContainer flex items-center justify-between gap-4"
+        >
+          <a
+            href="#"
+            class="toursHeaderButton text-white font-Exo font-bold text-lg text-center bg-ttservicesDark border border-ttservicesDark rounded-lg py-2 px-6 transition duration-200 ease-in-out hover:bg-ttservices hover:border-ttservices"
+            >Перейти</a
+          >
+        </div>
+      </div>
+      <!--End of toursHeader-->
+      <div
+        class="toursCards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mt-8 mx-4"
+      >
+        <div
+          class="toursCard bg-ttservicesLight rounded-lg flex flex-col items-center justify-between p-4"
+        >
+          <div
+            class="toursCardImg h-52 sm:h-64 md:h-72 lg:h-80 xl:h-96 bg-cover bg-center w-full"
+            style="background-image: url(src/img/businessTaxi.png)"
+          ></div>
+          <div class="toursCardText text-center py-4">
+            <h2 class="carName font-Exo font-bold text-2xl text-ttservicesDark">
+              Toyota Camry
+            </h2>
+            <p class="carDescription font-Exo text-base text-gray-700 mt-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div
+            class="toursCardBottom w-full py-4 flex items-center justify-between"
+          >
+            <p
+              class="toursCardPrice font-Exo font-bold text-2xl text-ttservicesDark"
+            >
+              69$
+            </p>
+            <a
+              href="#"
+              class="toursCardButton font-Exo font-bold text-lg text-white bg-ttservices border border-ttservices rounded-lg px-6 py-2 transition duration-200 ease-in-out hover:bg-ttservicesDark hover:border-ttservicesDark"
+              >Подробнее</a
+            >
+          </div>
+        </div>
+        <!--End of toursCard 1-->
+        <div
+          class="toursCard bg-ttservicesLight rounded-lg flex flex-col items-center justify-between p-4"
+        >
+          <div
+            class="toursCardImg h-52 sm:h-64 md:h-72 lg:h-80 xl:h-96 bg-cover bg-center w-full"
+            style="background-image: url(src/img/businessTaxi.png)"
+          ></div>
+          <div class="toursCardText text-center py-4">
+            <h2 class="carName font-Exo font-bold text-2xl text-ttservicesDark">
+              Toyota Camry
+            </h2>
+            <p class="carDescription font-Exo text-base text-gray-700 mt-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div
+            class="toursCardBottom w-full py-4 flex items-center justify-between"
+          >
+            <p
+              class="toursCardPrice font-Exo font-bold text-2xl text-ttservicesDark"
+            >
+              69$
+            </p>
+            <a
+              href="#"
+              class="toursCardButton font-Exo font-bold text-lg text-white bg-ttservices border border-ttservices rounded-lg px-6 py-2 transition duration-200 ease-in-out hover:bg-ttservicesDark hover:border-ttservicesDark"
+              >Подробнее</a
+            >
+          </div>
+        </div>
+        <!--End of toursCard 2-->
+        <div
+          class="toursCard bg-ttservicesLight rounded-lg flex flex-col items-center justify-between p-4"
+        >
+          <div
+            class="toursCardImg h-52 sm:h-64 md:h-72 lg:h-80 xl:h-96 bg-cover bg-center w-full"
+            style="background-image: url(src/img/businessTaxi.png)"
+          ></div>
+          <div class="toursCardText text-center py-4">
+            <h2 class="carName font-Exo font-bold text-2xl text-ttservicesDark">
+              Toyota Camry
+            </h2>
+            <p class="carDescription font-Exo text-base text-gray-700 mt-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div
+            class="toursCardBottom w-full py-4 flex items-center justify-between"
+          >
+            <p
+              class="toursCardPrice font-Exo font-bold text-2xl text-ttservicesDark"
+            >
+              69$
+            </p>
+            <a
+              href="#"
+              class="toursCardButton font-Exo font-bold text-lg text-white bg-ttservices border border-ttservices rounded-lg px-6 py-2 transition duration-200 ease-in-out hover:bg-ttservicesDark hover:border-ttservicesDark"
+              >Подробнее</a
+            >
+          </div>
+        </div>
+        <!--End of toursCard 3-->
+        <div
+          class="toursCard bg-ttservicesLight rounded-lg flex flex-col items-center justify-between p-4"
+        >
+          <div
+            class="toursCardImg h-52 sm:h-64 md:h-72 lg:h-80 xl:h-96 bg-cover bg-center w-full"
+            style="background-image: url(src/img/businessTaxi.png)"
+          ></div>
+          <div class="toursCardText text-center py-4">
+            <h2 class="carName font-Exo font-bold text-2xl text-ttservicesDark">
+              Toyota Camry
+            </h2>
+            <p class="carDescription font-Exo text-base text-gray-700 mt-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div
+            class="toursCardBottom w-full py-4 flex items-center justify-between"
+          >
+            <p
+              class="toursCardPrice font-Exo font-bold text-2xl text-ttservicesDark"
+            >
+              69$
+            </p>
+            <a
+              href="#"
+              class="toursCardButton font-Exo font-bold text-lg text-white bg-ttservices border border-ttservices rounded-lg px-6 py-2 transition duration-200 ease-in-out hover:bg-ttservicesDark hover:border-ttservicesDark"
+              >Подробнее</a
+            >
+          </div>
+        </div>
+        <!--End of toursCard 4-->
+      </div>
+      <!--End of toursCards-->
+    </div>
+    <!--End of tours-->
+    <div class="flex flex-wrap justify-center items-center py-6 md:py-10">
+      <div
+        class="flex flex-col items-center justify-center w-44 md:w-52 mx-4 md:mx-8 my-4 md:my-0"
+      >
+        <img
+          class="h-25 w-25 md:h-30 md:w-30 object-contain mb-2"
+          src="src/img/magnifier.png"
+          alt="Лупа"
+        />
+        <p
+          class="font-extrabold text-ttservicesDark text-sm md:text-base text-center"
+        >
+          Внимание к деталям
+        </p>
+      </div>
+      <div
+        class="flex flex-col items-center justify-center w-44 md:w-52 mx-4 md:mx-8 my-4 md:my-0"
+      >
+        <img
+          class="h-25 w-25 md:h-30 md:w-30 object-contain mb-2"
+          src="src/img/pricing.png"
+          alt="Цены"
+        />
+        <p
+          class="font-extrabold text-ttservicesDark text-sm md:text-base text-center"
+        >
+          Гибкая ценовая политика
+        </p>
+      </div>
+      <div
+        class="flex flex-col items-center justify-center w-44 md:w-52 mx-4 md:mx-8 my-4 md:my-0"
+      >
+        <img
+          class="h-25 w-25 md:h-30 md:w-30 object-contain mb-2"
+          src="src/img/qualityCar.png"
+          alt="Автомобиль"
+        />
+        <p
+          class="font-extrabold text-ttservicesDark text-sm md:text-base text-center"
+        >
+          Высококачественные автомобили
+        </p>
+      </div>
+      <div
+        class="flex flex-col items-center justify-center w-44 md:w-52 mx-4 md:mx-8 my-4 md:my-0"
+      >
+        <img
+          class="h-25 w-25 md:h-30 md:w-30 object-contain mb-2"
+          src="src/img/drivers.png"
+          alt="Сервис"
+        />
+        <p
+          class="font-extrabold text-ttservicesDark text-sm md:text-base text-center"
+        >
+          Сертифицированные англоязычные водители
+        </p>
+      </div>
+      <div
+        class="flex flex-col items-center justify-center w-44 md:w-52 mx-4 md:mx-8 my-4 md:my-0"
+      >
+        <img
+          class="h-25 w-25 md:h-30 md:w-30 object-contain mb-2"
+          src="src/img/standard.png"
+          alt="standard"
+        />
+        <p
+          class="font-extrabold text-ttservicesDark text-sm md:text-base text-center"
+        >
+          Соответствие стандартам ОТ, ПБ и ООС
+        </p>
+      </div>
+    </div>
+    <div class="trustingPartners">
+      <h1>Наши партнеры</h1>
+      <h2>Компании, которые нам доверяют</h2>
+      <div class="carousel-container">
+        <div class="inner-carousel">
+          <div class="track">
+            <div class="card-container">
+              <div
+                class="card"
+                style="background-image: url(src/img/partner1.png)"
+              ></div>
+            </div>
+            <div class="card-container">
+              <div
+                class="card"
+                style="background-image: url(src/img/partner2.png)"
+              ></div>
+            </div>
+            <div class="card-container">
+              <div
+                class="card"
+                style="background-image: url(src/img/partner3.png)"
+              ></div>
+            </div>
+            <div class="card-container">
+              <div
+                class="card"
+                style="background-image: url(src/img/partner1.png)"
+              ></div>
+            </div>
+            <div class="card-container">
+              <div
+                class="card"
+                style="background-image: url(src/img/partner2.png)"
+              ></div>
+            </div>
+            <div class="card-container">
+              <div
+                class="card"
+                style="background-image: url(src/img/partner3.png)"
+              ></div>
+            </div>
+            <div class="card-container">
+              <div
+                class="card"
+                style="background-image: url(src/img/partner1.png)"
+              ></div>
+            </div>
+            <div class="card-container">
+              <div
+                class="card"
+                style="background-image: url(src/img/partner2.png)"
+              ></div>
+            </div>
+            <div class="card-container">
+              <div
+                class="card"
+                style="background-image: url(src/img/partner3.png)"
+              ></div>
+            </div>
+            <div class="card-container">
+              <div
+                class="card"
+                style="background-image: url(src/img/partner1.png)"
+              ></div>
+            </div>
+            <div class="card-container">
+              <div
+                class="card"
+                style="background-image: url(src/img/partner2.png)"
+              ></div>
+            </div>
+            <div class="card-container">
+              <div
+                class="card"
+                style="background-image: url(src/img/partner3.png)"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End of trustingPartners-->
+
+    <div
+      x-data="{ showModal: false, imageSrc: '' }"
+      class="letters mb-8 mr-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-8 xl:gap-12"
+    >
+      <template
+        x-for="(letter, index) in ['letter1.png', 'letter2.png', 'letter3.png', 'letter4.png']"
+        :key="index"
+      >
+        <div
+          x-on:click="showModal = true; imageSrc = `src/img/${letter}`"
+          class="flex flex-col items-center justify-center cursor-pointer hover:scale-110 transition-all"
+        >
+          <img
+            class="h-25 w-25 md:h-30 md:w-30 object-contain mb-2"
+            :src="`src/img/${letter}`"
+            :alt="letter"
+          />
+        </div>
+      </template>
+      <div
+        x-show="showModal"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+      >
+        <div
+          x-on:keydown.escape="showModal = false"
+          class="max-w-screen-xl mx-auto"
+        >
+          <div class="relative">
+            <button
+              x-on:click="showModal = false"
+              class="absolute top-0 right-0 mt-2 mr-2 text-white focus:outline-none"
+              aria-label="Close"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 fill-current"
+                viewBox="0 0 24 24"
+              >
+                <path d="M18 6L6 18M6 6l12 12" />
+              </svg>
+            </button>
+            <div
+              x-show="showModal"
+              x-on:click.away="showModal = false"
+              x-transition:enter="transition duration-300 ease-out"
+              x-transition:enter-start="opacity-0"
+              x-transition:enter-end="opacity-100"
+              x-transition:leave="transition duration-300 ease-out"
+              x-transition:leave-start="opacity-100"
+              x-transition:leave-end="opacity-0"
+              class="fixed z-50 inset-0 overflow-y-auto"
+            >
+              <div class="flex items-center justify-center min-h-screen px-4">
+                <div class="w-full">
+                  <div class="relative mx-auto max-w-3xl max-h-screen">
+                    <button
+                      x-on:click="showModal = false"
+                      class="absolute top-0 right-0 mt-2 mr-2 text-white focus:outline-none"
+                      aria-label="Close"
+                    >
+                      <svg
+                        height="40px"
+                        width="40px"
+                        version="1.1"
+                        id="Capa_1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0 0 26 26"
+                        xml:space="preserve"
+                      >
+                        <g>
+                          <path
+                            style="fill: #42406d"
+                            d="M21.125,0H4.875C2.182,0,0,2.182,0,4.875v16.25C0,23.818,2.182,26,4.875,26h16.25
+					C23.818,26,26,23.818,26,21.125V4.875C26,2.182,23.818,0,21.125,0z M18.78,17.394l-1.388,1.387c-0.254,0.255-0.67,0.255-0.924,0
+					L13,15.313L9.533,18.78c-0.255,0.255-0.67,0.255-0.925-0.002L7.22,17.394c-0.253-0.256-0.253-0.669,0-0.926l3.468-3.467
+					L7.221,9.534c-0.254-0.256-0.254-0.672,0-0.925l1.388-1.388c0.255-0.257,0.671-0.257,0.925,0L13,10.689l3.468-3.468
+					c0.255-0.257,0.671-0.257,0.924,0l1.388,1.386c0.254,0.255,0.254,0.671,0.001,0.927l-3.468,3.467l3.468,3.467
+					C19.033,16.725,19.033,17.138,18.78,17.394z"
+                          />
+                        </g>
+                      </svg>
+                    </button>
+                    <img
+                      :src="imageSrc"
+                      class="h-screen md:h-screen w-full object-contain py-4"
                     />
                   </div>
-                  <textarea
-                    name="message"
-                    id="message"
-                    placeholder="Ваше сообщение"
-                    class="message"
-                  ></textarea>
-                  <button class="sendButton">Отправить</button>
-                </form>
+                </div>
               </div>
-            </div> <!--End of contactUsForm-->
-            <div class="contactData">
-              <div class="contactDataItem">
-                <a href="tel:+994 50 555 55 55" class="contactDataItemIcon"> 
-                  <img src="src/img/phoneIcon.png" alt="phone"/>
-                </a>
-                <a href="tel:+994 50 555 55 55">+994 55 966 59 09</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="footerContact h-full md:grid md:grid-cols-2 md:gap-4 md:items-center"
+    >
+      <div
+        class="mapouter h-full relative m-12 border-solid border-4 border-ttservices rounded-lg"
+      >
+        <div class="gmap_canvas h-full">
+          <iframe
+            width="100%"
+            height="100%"
+            id="gmap_canvas"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3038.7309586574693!2d49.914081315351105!3d40.392655065027405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4030630f263f8597%3A0x42a5189df794320d!2sTT%20Car%20Service!5e0!3m2!1sru!2saz!4v1678290008909!5m2!1sru!2saz"
+            frameborder="0"
+            scrolling="no"
+            marginheight="0"
+            marginwidth="0"
+          ></iframe>
+        </div>
+        <a
+          href=""
+          class="seeOnMap absolute top-0 right-0 m-5 md:m-8 p-4 rounded-lg text-white bg-ttservicesDark font-Exo text-lg transition-all ease-in-out duration-200 hover:bg-ttservicesLight hover:text-ttservicesDark"
+          >Посмотреть на карте</a
+        >
+      </div>
+      <div class="contacts bg-white text-ttservices py-8 px-4 md:px-12">
+        <div class="contactUsForm mt-8">
+          <div
+            class="contactUsFormTitle text-ttservices font-Exo text-2xl mb-4"
+          >
+            <h2 class="text-4xl">Свяжитесь с нами</h2>
+          </div>
+          <div class="contactUsFormInputs">
+            <form action="">
+              <div
+                class="credentials flex flex-col md:flex-row md:justify-between gap-2"
+              >
+                <input
+                  type="text"
+                  placeholder="Ваше имя"
+                  class="name h-10 rounded-md bg-gray-100 w-full md:w-full px-2 font-Exo border-2 border-ttservices"
+                />
+                <input
+                  type="text"
+                  placeholder="Ваш номер телефона"
+                  class="phone h-10 rounded-md bg-gray-100 w-full md:w-full px-4 font-Exo border-2 border-ttservices"
+                />
               </div>
-              <div class="contactDataItem">
-                <a href="mailto:info@ttservices.az" class="contactDataItemIcon">
-                  <img src="src/img/mailIcon.png" alt="mail" />
-                </a>
-                <a href="mailto:info@ttservices.az">info@ttservices.az</a>
+              <textarea
+                placeholder="Ваше сообщение"
+                class="message h-48 rounded-md bg-gray-100 mt-4 px-4 py-2 font-Exo w-full border-2 border-ttservices"
+              ></textarea>
+              <button
+                type="submit"
+                class="sendButton bg-ttservices rounded-lg border-2 border-ttservices px-8 py-4 text-white font-Exo mt-4 transition-all ease-in-out duration-250 cursor-pointer hover:bg-ttservicesDark hover:text-white"
+              >
+                Отправить
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="flex flex-col">
+      <div
+        class="footerContent grid md:grid-cols-3 grid-cols-1 justify-center items-center bg-ttservicesDark p-6 mt-10 gap-4"
+      >
+        <div class="seen-recently flex flex-col gap-3">
+          <!--first column-->
+          <h1 class="text-3xl md:text-4xl font-Exo font-bold text-white">
+            Вы недавно смотрели
+          </h1>
+          <div
+            class="recent-items flex flex-row font-exo text-white w-full justify-between"
+          >
+            <ul class="recent-item">
+              <li><a href="">Link1</a></li>
+              <br />
+              <li><a href="">Link1</a></li>
+              <br />
+              <li><a href="">Link1</a></li>
+              <br />
+            </ul>
+            <ul class="recent-item">
+              <li><a href="">Link1</a></li>
+              <br />
+              <li><a href="">Link1</a></li>
+              <br />
+              <li><a href="">Link1</a></li>
+              <br />
+            </ul>
+            <ul class="recent-item">
+              <li><a href="">Link1</a></li>
+              <br />
+              <li><a href="">Link1</a></li>
+              <br />
+              <li><a href="">Link1</a></li>
+              <br />
+            </ul>
+          </div>
+        </div>
+        <div class="footer-links flex flex-col justify-center items-center md:justify-evenly md:items-center gap-3 font-Exo text-white w-full">
+          <!--second column-->
+          <img
+            src="src/img/ttservice_transparent.png"
+            alt="logo"
+            class="w-[80%] md:w-[65%] lg:w-[50%]"
+          />
+          <div class="contactData flex flex-col justify-center items-center">
+            <div
+              class="contactDataItem flex flex-row items-center justify-center"
+            >
+              <a href="tel:+994 50 555 55 55" class="contactDataItemIcon">
+                <img src="src/img/phoneIcon.png" alt="phone" />
               </a>
-          </div> <!--End of contacts-->
-        </footer>        
-    <script src="src/scripts/customCarousel.js"></script>
-    <!-- <script src="src/scripts/customCarousel2.js"></script> -->
+              <a href="tel:+994 50 555 55 55">+994 55 966 59 09</a>
+            </div>
+            <div
+              class="contactDataItem flex flex-row items-center justify-center"
+            >
+              <a href="mailto:info@ttservices.az" class="contactDataItemIcon">
+                <img src="src/img/mailIcon.png" alt="mail" />
+              </a>
+              <a href="mailto:info@ttservices.az">info@ttservices.az</a>
+            </div>
+          </div>
+        </div>
+		<div class="flex flex-col justify-center items-center md:justify-start md:items-end font-Exo text-white"> <!--third column-->
+			<div class="images flex flex-row items-center justify-center gap-3">
+				<a href="https://www.facebook.com/ttservices.az" target="_blank">
+					<img src="src/img/social/fb.png" alt="facebook class="w-16" />
+				</a>
+				<a href="https://www.instagram.com/ttservices.az/" target="_blank">
+					<img src="src/img/social/insta.png" alt="instagram" class="w-16" />
+				</a>
+				<a href="https://wa.me/994559665909" target="_blank">
+					<img src="src/img/social/wp.png" alt="whatsapp" class="w-16" />
+				</a>
+			</div>
+			<br/>
+			<p>Г. Баку <br/>ул. Л. Толстого, 153/29А</p>
+		</div>
+      </div>
+      <div
+        class="flex flex-col font-Exo text-white bg-ttservicesDark items-start pl-4 pb-4 text-left md:text-center"
+      >
+        <p>© 2023 İdarəLab</p>
+        <p>Разработка сайта</p>
+      </div>
+    </footer>
+
+    <script type="text/javascript" src="src/js/carousel.js"></script>
+    <script type="text/javascript" src="src/js/navbar.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js"
+    ></script>
   </body>
 </html>
