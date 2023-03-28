@@ -50,7 +50,8 @@ module.exports = {
         "ttservices": "#6a68ad",
         "ttservicesDark": "#42406d",
         "ttservicesLight": "#d6d5ef",
-        "ttservicesGray": "#343434"
+        "ttservicesGray": "#343434",
+        "ttservicesGrayLight": "#D7D7D7",
       },
       fontFamily: {
         Inter: ["'Inter'", "sans-serif"],

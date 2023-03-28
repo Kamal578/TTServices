@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TTServices - Home</title>
+    <link rel="stylesheet" href="dist/output.css" />
+  </head>
+  <body x-data="{isOpen: false}" class="bg-white">
+    <nav
+      class="relative px-4 py-4 flex justify-between items-center bg-ttservices font-Inter text-2xl"
+    >
+      <a class="leading-none" href="/">
+        <img src="src/img/ttservices.png" alt="Logo" class="w-32" />
+      </a>
+      <div class="lg:hidden">
+        <button class="navbar-burger flex items-center text-white p-3">
+          <svg
+            class="block h-4 w-4 fill-current"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Mobile menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+          </svg>
+        </button>
+      </div>
+      <ul
+        class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-6"
+      >
+        <li>
+          <a class="text-lg text-white hover:border-b-4 transition-all" href="#"
+            >Главная</a
+          >
+        </li>
+        <li>
+          <a class="text-lg text-white hover:border-b-4 transition-all" href="#"
+            >О нас</a
+          >
+        </li>
+        <li>
+          <a class="text-lg text-white hover:border-b-4 transition-all" href="#"
+            >Услуги</a
+          >
+        </li>
+
+        <!--language dropdown-->
+        <div class="relative inline-block text-left">
+          <div>
+            <button
+              type="button"
+              class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+              id="menu-button"
+              aria-expanded="true"
+              aria-haspopup="true"
+            >
+              Язык
+              <svg
+                class="-mr-1 h-5 w-5 text-gray-400"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!--
+				  Dropdown menu, show/hide based on menu state.
+			  
+				  Entering: "transition ease-out duration-100"
+					From: "transform opacity-0 scale-95"
+					To: "transform opacity-100 scale-100"
+				  Leaving: "transition ease-in duration-75"
+					From: "transform opacity-100 scale-100"
+					To: "transform opacity-0 scale-95"
+				-->
+          <div
+            class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden"
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="menu-button"
+            tabindex="-1"
+          >
+            <div class="py-1" role="none">
+              <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+              <a
+                href="#"
+                class="text-gray-700 block px-4 py-2 text-sm"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-0"
+                >RU</a
+              >
+              <a
+                href="#"
+                class="text-gray-700 block px-4 py-2 text-sm"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-1"
+                >AZ</a
+              >
+              <a
+                href="#"
+                class="text-gray-700 block px-4 py-2 text-sm"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-2"
+                >EN</a
+              >
+            </div>
+          </div>
+        </div>
+      </ul>
+      <button
+        class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-ttservicesDark hover:bg-ttservicesLight hover:text-black text-lg text-white font-bold rounded-xl transition duration-200"
+        x-on:click="isOpen = true"
+      >
+        Контакты
+      </button>
+    </nav>
+    <!--mobile menu-->
+    <div class="navbar-menu relative z-50 hidden transition-all">
+      <div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+      <nav
+        class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto"
+      >
+        <div class="flex items-center mb-8">
+          <a class="mr-auto text-3xl font-bold leading-none" href="#">
+            <img
+              class="h-12 w-auto"
+              src="src/img/ttservices.png"
+              alt="Workflow"
+            />
+          </a>
+          <button class="navbar-close">
+            <svg
+              class="h-6 w-6 text-white cursor-pointer hover:text-gray-500"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div>
+          <ul>
+            <li class="mb-1">
+              <a
+                class="block p-4 text-sm font-semibold text-ttservices hover:bg-blue-50 hover:text-blue-600 rounded"
+                href="#"
+                >Главная</a
+              >
+            </li>
+            <li class="mb-1">
+              <a
+                class="block p-4 text-sm font-semibold text-ttservices hover:bg-blue-50 hover:text-blue-600 rounded"
+                href="#"
+                >О нас
+              </a>
+            </li>
+            <li class="mb-1">
+              <a
+                class="block p-4 text-sm font-semibold text-ttservices hover:bg-blue-50 hover:text-blue-600 rounded"
+                href="#"
+                >Услуги</a
+              >
+            </li>
+            <li class="mb-1">
+              <div class="relative inline-block text-left">
+                <div>
+                  <button
+                    type="button"
+                    class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                    id="menu-button"
+                    aria-expanded="true"
+                    aria-haspopup="true"
+                  >
+                    Язык
+                    <svg
+                      class="-mr-1 h-5 w-5 text-gray-400"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                <!--
+							Dropdown menu, show/hide based on menu state.
+						
+							Entering: "transition ease-out duration-100"
+							  From: "transform opacity-0 scale-95"
+							  To: "transform opacity-100 scale-100"
+							Leaving: "transition ease-in duration-75"
+							  From: "transform opacity-100 scale-100"
+							  To: "transform opacity-0 scale-95"
+						  -->
+                <div
+                  class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="menu-button"
+                  tabindex="-1"
+                >
+                  <div class="py-1" role="none">
+                    <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                    <a
+                      href="#"
+                      class="text-gray-700 block px-4 py-2 text-sm"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="menu-item-0"
+                      >RU</a
+                    >
+                    <a
+                      href="#"
+                      class="text-gray-700 block px-4 py-2 text-sm"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="menu-item-1"
+                      >AZ</a
+                    >
+                    <a
+                      href="#"
+                      class="text-gray-700 block px-4 py-2 text-sm"
+                      role="menuitem"
+                      tabindex="-1"
+                      id="menu-item-2"
+                      >EN</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="mt-auto">
+          <div class="pt-6">
+            <a
+              class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-ttservicesDark hover:bg-ttservicesLight rounded-xl"
+              href="#"
+              >Контакты</a
+            >
+          </div>
+          <p class="my-4 text-xs text-center text-white">
+            <span>Copyright © 2023</span>
+          </p>
+        </div>
+      </nav>
+    </div>
+
+    <!--content-->
+    <div class="hero px-10">
+      <p class="pt-10 text-xl text-ttservicesGrayLight font-Exo">
+        Главная/Услуги/Трансфер в аэропорт
+      </p>
+      <br />
+      <h1
+        class="text-3xl md:text-5xl font-Exo font-bold text-ttservicesDark text-center md:text-left"
+      >
+        Трансфер в аэропорт
+      </h1>
+      <div
+        class="heroContent flex flex-col items-start justify-between md:flex-row gap-5 pt-10"
+      >
+        <div
+          class="image bg-center bg-cover bg-[url('../src/img/airportTransfer.png')] h-[70vh] w-full md:w-[58%] rounded-lg shadow-lg"
+        ></div>
+        <article
+          class="text font-Exo items-start justify-evenly text-ttservicesGray text-lg md:text-3xl w-full md:w-[38%] font-thin"
+        >
+          <p>
+            Вот тут будет текст о том что такое вообще аэропорт сервис и что он
+            из себя представляет
+          </p>
+          <br />
+          <p>Вот тут список для кого и для чего</p>
+          <br />
+          <button
+            @click="isOpen = true"
+            class="bg-ttservicesDark text-white font-bold py-2 px-4 rounded-lg bottom-0 right-0 mb-5 mr-5 transition-all hover:bg-ttservices hover:scale-110"
+          >
+            Заказать
+          </button>
+        </article>
+      </div>
+      <h1
+        class="text-2xl md:text-4xl font-Exo font-semibold text-ttservicesDark text-center md:text-left pt-10"
+      >
+        В стоимость услуги входит
+      </h1>
+      <ul class="pt-6 font-Exo text-ttservicesGray text-lg md:text-xl">
+        <li>Вот тут список того, что входит в эту услугу</li>
+        <li>Вот тут список того, что входит в эту услугу</li>
+        <li>Вот тут список того, что входит в эту услугу</li>
+      </ul>
+      <h1
+        class="text-2xl md:text-4xl font-Exo font-semibold text-ttservicesDark text-center md:text-left pt-10"
+      >
+        Дополнительно
+      </h1>
+      <p class="pt-6 font-Exo text-ttservicesGray text-lg md:text-xl">
+        Какая нибудь дополнительная информация
+      </p>
+    </div>
+
+    <div class="advantages flex flex-col">
+      <div class="flex flex-wrap justify-center items-center py-4 md:py-10">
+        <div
+          class="flex flex-col items-center justify-center w-44 md:w-52 mx-4 md:mx-4 my-4 md:my-0"
+        >
+          <img
+            class="h-25 w-25 md:h-30 md:w-30 object-contain mb-2"
+            src="src/img/magnifier.png"
+            alt="Лупа"
+          />
+          <p
+            class="font-extrabold text-ttservicesDark text-sm md:text-base text-center"
+          >
+            Внимание к деталям
+          </p>
+        </div>
+        <div
+          class="flex flex-col items-center justify-center w-44 md:w-52 mx-4 md:mx-8 my-4 md:my-0"
+        >
+          <img
+            class="h-25 w-25 md:h-30 md:w-30 object-contain mb-2"
+            src="src/img/pricing.png"
+            alt="Цены"
+          />
+          <p
+            class="font-extrabold text-ttservicesDark text-sm md:text-base text-center"
+          >
+            Гибкая ценовая политика
+          </p>
+        </div>
+        <div
+          class="flex flex-col items-center justify-center w-44 md:w-52 mx-4 md:mx-8 my-4 md:my-0"
+        >
+          <img
+            class="h-25 w-25 md:h-30 md:w-30 object-contain mb-2"
+            src="src/img/qualityCar.png"
+            alt="Автомобиль"
+          />
+          <p
+            class="font-extrabold text-ttservicesDark text-sm md:text-base text-center"
+          >
+            Высококачественные автомобили
+          </p>
+        </div>
+        <div
+          class="flex flex-col items-center justify-center w-44 md:w-52 mx-4 md:mx-8 my-4 md:my-0"
+        >
+          <img
+            class="h-25 w-25 md:h-30 md:w-30 object-contain mb-2"
+            src="src/img/drivers.png"
+            alt="Сервис"
+          />
+          <p
+            class="font-extrabold text-ttservicesDark text-sm md:text-base text-center"
+          >
+            Сертифицированные англоязычные водители
+          </p>
+        </div>
+        <div
+          class="flex flex-col items-center justify-center w-44 md:w-52 mx-4 md:mx-8 my-4 md:my-0"
+        >
+          <img
+            class="h-25 w-25 md:h-30 md:w-30 object-contain mb-2"
+            src="src/img/standard.png"
+            alt="standard"
+          />
+          <p
+            class="font-extrabold text-ttservicesDark text-sm md:text-base text-center"
+          >
+            Соответствие стандартам ОТ, ПБ и ООС
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--End of advantages-->
+
+    <div
+      x-data="{ activeTab: 'tab1' }"
+      class="autopark bg-white py-10 font-Exo"
+    >
+      <div
+        class="autoparkHeader container mx-auto flex flex-col md:flex-row justify-between items-center mb-8"
+      >
+        <h1
+          class="md:3xl text-4xl font-bold text-center md:text-left mb-4 md:mb-0 text-ttservicesDark"
+        >
+          Наш автопарк
+        </h1>
+        <div class="autoparkHeaderButtonsContainer flex flex-row gap-4">
+          <button
+            x-on:click="activeTab = 'tab1'"
+            :class="activeTab === 'tab1' ? 'bg-ttservicesDark text-white' : 'bg-white text-ttservicesDark hover:bg-ttservicesDark hover:text-white hover:scale-110'"
+            class="autoparkHeaderButton text-lg font-bold border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full transition-all"
+          >
+            Легковые
+          </button>
+          <button
+            x-on:click="activeTab = 'tab2'"
+            :class="activeTab === 'tab2' ? 'bg-ttservicesDark text-white' : 'bg-white text-ttservicesDark hover:bg-ttservicesDark hover:text-white hover:scale-110'"
+            class="autoparkHeaderButton text-lg font-bold border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full transition-all"
+          >
+            VANs
+          </button>
+          <button
+            x-on:click="activeTab = 'tab3'"
+            :class="activeTab === 'tab3' ? 'bg-ttservicesDark text-white' : 'bg-white text-ttservicesDark hover:bg-ttservicesDark hover:text-white hover:scale-110'"
+            class="autoparkHeaderButton text-lg font-bold border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full transition-all"
+          >
+            Автобусы
+          </button>
+        </div>
+      </div>
+      <!--End of autoparkHeader-->
+      <div
+        x-show="activeTab === 'tab1'"
+        class="autoparkCards container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+      >
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry tab1</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 1-->
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 2-->
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 3-->
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 4-->
+      </div>
+      <div
+        x-show="activeTab === 'tab2'"
+        class="autoparkCards container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+      >
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry tab2</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 1-->
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 2-->
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 3-->
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 4-->
+      </div>
+      <div
+        x-show="activeTab === 'tab3'"
+        class="autoparkCards container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+      >
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry tab3</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 1-->
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 2-->
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 3-->
+        <div
+          class="autoparkCard flex flex-col items-center bg-ttservicesLight rounded-lg shadow-md p-4"
+        >
+          <div
+            class="autoparkCardImg h-48 w-full bg-center bg-cover bg-[url('../src/img/businessTaxi.png')]"
+          ></div>
+          <div class="autoparkCardText text-center px-4 py-2 flex-grow">
+            <h2 class="carName text-lg font-bold mb-2">Toyota Camry</h2>
+            <h2 class="carCategory text-lg text-gray-500 mb-2">Econom Class</h2>
+            <p class="carDescription text-gray-500 text-sm mb-2">
+              Описание машины и кнопока еще если текста много
+            </p>
+          </div>
+          <div class="autoparkCardButtons pb-4">
+            <button
+              x-on:click="isOpen =!isOpen"
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Заказать
+            </button>
+            <button
+              class="autoparkCardButton text-white font-bold bg-ttservicesDark border-solid border-2 border-ttservicesDark py-2 px-4 rounded-full mb-2 hover:bg-white hover:text-ttservicesDark transition-all"
+            >
+              Подробнее
+            </button>
+          </div>
+        </div>
+        <!--End of autoparkCard 4-->
+      </div>
+      <!--End of tab3-->
+      <div
+        x-show="isOpen"
+        class="fixed inset-0 z-50 overflow-y-auto"
+        aria-labelledby="modal-title"
+        role="dialog"
+        aria-modal="true"
+      >
+        <div
+          class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0"
+        >
+          <div
+            x-cloak
+            @click="isOpen = false"
+            x-show="isOpen"
+            x-transition:enter="transition ease-out duration-300 transform"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-200 transform"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40"
+            aria-hidden="true"
+          ></div>
+
+          <div
+            x-cloak
+            x-show="isOpen"
+            x-transition:enter="transition ease-out duration-300 transform"
+            x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+            x-transition:leave="transition ease-in duration-200 transform"
+            x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+            x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            class="inline-block w-full max-w-xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl 2xl:max-w-2xl"
+          >
+            <div class="flex items-center justify-between space-x-4">
+              <h1 class="text-xl font-bold text-ttservicesDark">
+                Заполните форму или свяжитесь любым удобным для Вас способом
+              </h1>
+
+              <button
+                @click="isOpen = false"
+                class="text-gray-600 focus:outline-none hover:text-gray-700"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <form class="mt-5">
+              <div>
+                <input
+                  placeholder="Ваше имя"
+                  type="text"
+                  class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40"
+                />
+              </div>
+
+              <div class="mt-4">
+                <input
+                  placeholder="Ваш e-mail/номер телефона"
+                  type="text"
+                  class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40"
+                />
+              </div>
+
+              <div class="mt-4">
+                <textarea
+                  placeholder="Ваше сообщение"
+                  type="text"
+                  rows="8"
+                  class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40"
+                ></textarea>
+              </div>
+
+              <div class="mt-4">
+                <h1 class="text-md font-medium text-black uppercase">Почта</h1>
+                <a
+                  href="mailto:info@ttservices.az"
+                  class="text-md font-medium text-ttservices"
+                >
+                  info@ttservices.az
+                </a>
+                <h1 class="text-md font-medium text-black uppercase">
+                  Телефон
+                </h1>
+                <a
+                  href="tel: +994 55 555 55 55"
+                  class="text-md font-medium text-ttservices"
+                >
+                  +994 55 555 55 55
+                </a>
+                <h1 class="text-md font-medium text-black uppercase">
+                  Мессенджер
+                </h1>
+                <a
+                  href="https://web.whatsapp.com/"
+                  class="text-md font-medium text-ttservices"
+                >
+                  WhatsApp
+                </a>
+              </div>
+
+              <div class="flex justify-end mt-6">
+                <button
+                  type="button"
+                  class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-md dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50"
+                >
+                  Invite Member
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End of autopark-->
+
+    <div class="youMayAlsoLike flex flex-col xl:px-24 py-4">
+      <h1
+        class="text-3xl md:text-5xl font-Exo font-bold text-ttservicesDark text-center md:text-left"
+      >
+        Вам так же может понравиться
+      </h1>
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mt-8 md:mt-12 rounded-md bg-white"
+      >
+        <!--Reusable Card, put in forEach-->
+        <div
+          class="flex flex-col items-baseline justify-between rounded-md shadow-md bg-white py-8 px-6 border-solid border-2 border-ttservicesDark"
+        >
+          <div
+            class="servicesContainerCardImg bg-[url('../src/img/businessTaxi.png')] w-full h-30 md:h-40 bg-cover bg-center rounded-t-md"
+          ></div>
+          <h2
+            class="text-2xl font-Exo font-bold text-ttservicesDark mt-6 text-left"
+          >
+            Business Taxi
+          </h2>
+          <p class="text-ttservicesDark text-left mt-4 font-Exo">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae
+            officiis numquam in deserunt facere dolor placeat maxime veniam
+            reprehenderit minus rem, illum ratione tempore. Impedit laborum
+            distinctio ut quo accusantium!
+          </p>
+          <a
+            href="#"
+            class="inline-block bg-ttservicesDark text-white font-Exo text-sm rounded-full px-4 py-2 mt-4 mb-2 transition-colors duration-200 ease-in-out hover:bg-ttservices"
+            >Подробнее</a
+          >
+        </div>
+        <!--End of servicesContainerCard 1-->
+
+        <div
+          class="flex flex-col items-baseline justify-between rounded-md shadow-md bg-white py-8 px-6 border-solid border-2 border-ttservicesDark"
+        >
+          <div
+            class="servicesContainerCardImg bg-[url('../src/img/businessTaxi.png')] w-full h-40 md:h-40 bg-cover bg-center rounded-t-md"
+          ></div>
+          <h2
+            class="text-2xl font-Exo font-bold text-ttservicesDark mt-6 text-left"
+          >
+            Business Taxi
+          </h2>
+          <p class="text-ttservicesDark text-left mt-4 font-Exo">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae
+            officiis numquam in deserunt facere dolor placeat maxime veniam
+            reprehenderit minus rem, illum ratione tempore. Impedit laborum
+            distinctio ut quo accusantium!
+          </p>
+          <a
+            href="#"
+            class="inline-block bg-ttservicesDark text-white font-Exo text-sm rounded-full px-4 py-2 mt-4 mb-2 transition-colors duration-200 ease-in-out hover:bg-ttservices"
+            >Подробнее</a
+          >
+        </div>
+        <!--End of servicesContainerCard 2-->
+
+        <div
+          class="flex flex-col items-baseline justify-between rounded-md shadow-md bg-white py-8 px-6 border-solid border-2 border-ttservicesDark"
+        >
+          <div
+            class="servicesContainerCardImg bg-[url('../src/img/businessTaxi.png')] w-full h-40 md:h-40 bg-cover bg-center rounded-t-md"
+          ></div>
+          <h2
+            class="text-2xl font-Exo font-bold text-ttservicesDark mt-6 text-left"
+          >
+            Business Taxi
+          </h2>
+          <p class="text-ttservicesDark text-left mt-4 font-Exo">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae
+            officiis numquam in deserunt facere dolor placeat maxime veniam
+            reprehenderit minus rem, illum ratione tempore. Impedit laborum
+            distinctio ut quo accusantium!
+          </p>
+          <a
+            href="#"
+            class="inline-block bg-ttservicesDark text-white font-Exo text-sm rounded-full px-4 py-2 mt-4 mb-2 transition-colors duration-200 ease-in-out hover:bg-ttservices"
+            >Подробнее</a
+          >
+        </div>
+        <div
+          class="flex flex-col items-baseline justify-between rounded-md shadow-md bg-white py-8 px-6 border-solid border-2 border-ttservicesDark"
+        >
+          <div
+            class="servicesContainerCardImg bg-[url('../src/img/businessTaxi.png')] w-full h-40 md:h-40 bg-cover bg-center rounded-t-md"
+          ></div>
+          <h2
+            class="text-2xl font-Exo font-bold text-ttservicesDark mt-6 text-left"
+          >
+            Business Taxi
+          </h2>
+          <p class="text-ttservicesDark text-left mt-4 font-Exo">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae
+            officiis numquam in deserunt facere dolor placeat maxime veniam
+            reprehenderit minus rem, illum ratione tempore. Impedit laborum
+            distinctio ut quo accusantium!
+          </p>
+          <a
+            href="#"
+            class="inline-block bg-ttservicesDark text-white font-Exo text-sm rounded-full px-4 py-2 mt-4 mb-2 transition-colors duration-200 ease-in-out hover:bg-ttservices"
+            >Подробнее</a
+          >
+        </div>
+        <!--End of servicesContainerCard 4-->
+      </div>
+    </div>
+
+    <footer class="flex flex-col">
+      <div
+        class="footerContent grid md:grid-cols-3 grid-cols-1 justify-center items-center bg-ttservicesDark p-6 mt-10 gap-4"
+      >
+        <div class="seen-recently flex flex-col gap-3">
+          <!--first column-->
+          <h1 class="text-3xl md:text-4xl font-Exo font-bold text-white">
+            Вы недавно смотрели
+          </h1>
+          <div
+            class="recent-items flex flex-row font-exo text-white w-full justify-between"
+          >
+            <ul class="recent-item">
+              <li><a href="">Link1</a></li>
+              <br />
+              <li><a href="">Link1</a></li>
+              <br />
+              <li><a href="">Link1</a></li>
+              <br />
+            </ul>
+            <ul class="recent-item">
+              <li><a href="">Link1</a></li>
+              <br />
+              <li><a href="">Link1</a></li>
+              <br />
+              <li><a href="">Link1</a></li>
+              <br />
+            </ul>
+            <ul class="recent-item">
+              <li><a href="">Link1</a></li>
+              <br />
+              <li><a href="">Link1</a></li>
+              <br />
+              <li><a href="">Link1</a></li>
+              <br />
+            </ul>
+          </div>
+        </div>
+        <div
+          class="footer-links flex flex-col justify-center items-center md:justify-evenly md:items-center gap-3 font-Exo text-white w-full"
+        >
+          <!--second column-->
+          <img
+            src="src/img/ttservice_transparent.png"
+            alt="logo"
+            class="w-[80%] md:w-[65%] lg:w-[50%]"
+          />
+          <div class="contactData flex flex-col justify-center items-center">
+            <div
+              class="contactDataItem flex flex-row items-center justify-center"
+            >
+              <a href="tel:+994 50 555 55 55" class="contactDataItemIcon">
+                <img src="src/img/phoneIcon.png" alt="phone" />
+              </a>
+              <a href="tel:+994 50 555 55 55">+994 55 966 59 09</a>
+            </div>
+            <div
+              class="contactDataItem flex flex-row items-center justify-center"
+            >
+              <a href="mailto:info@ttservices.az" class="contactDataItemIcon">
+                <img src="src/img/mailIcon.png" alt="mail" />
+              </a>
+              <a href="mailto:info@ttservices.az">info@ttservices.az</a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col justify-center items-center md:justify-start md:items-end font-Exo text-white"
+        >
+          <!--third column-->
+          <div class="images flex flex-row items-center justify-center gap-3">
+            <a href="https://www.facebook.com/ttservices.az" target="_blank">
+              <img src="src/img/social/fb.png" alt="facebook class="w-16" />
+            </a>
+            <a href="https://www.instagram.com/ttservices.az/" target="_blank">
+              <img
+                src="src/img/social/insta.png"
+                alt="instagram"
+                class="w-16"
+              />
+            </a>
+            <a href="https://wa.me/994559665909" target="_blank">
+              <img src="src/img/social/wp.png" alt="whatsapp" class="w-16" />
+            </a>
+          </div>
+          <br />
+          <p>Г. Баку <br />ул. Л. Толстого, 153/29А</p>
+        </div>
+      </div>
+      <div
+        class="flex flex-col font-Exo text-white bg-ttservicesDark items-start pl-4 pb-4 text-left md:text-center"
+      >
+        <p>© 2023 İdarəLab</p>
+        <p>Разработка сайта</p>
+      </div>
+    </footer>
+
+    <div
+      x-show="isOpen"
+      class="contact-modal fixed inset-0 z-50 overflow-y-auto"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        class="flex items-end justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0"
+      >
+        <div
+          x-cloak
+          @click="isOpen = false"
+          x-show="isOpen"
+          x-transition:enter="transition ease-out duration-300 transform"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="transition ease-in duration-200 transform"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+          class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-40"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          x-cloak
+          x-show="isOpen"
+          x-transition:enter="transition ease-out duration-300 transform"
+          x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+          x-transition:leave="transition ease-in duration-200 transform"
+          x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+          x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          class="inline-block w-full max-w-xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl 2xl:max-w-2xl"
+        >
+          <div class="flex items-center justify-between space-x-4">
+            <h1 class="text-xl font-bold text-ttservicesDark">
+              Заполните форму или свяжитесь любым удобным для Вас способом
+            </h1>
+
+            <button
+              @click="isOpen = false"
+              class="text-gray-600 focus:outline-none hover:text-gray-700"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <form class="mt-5">
+            <div>
+              <input
+                placeholder="Ваше имя"
+                type="text"
+                class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40"
+              />
+            </div>
+
+            <div class="mt-4">
+              <input
+                placeholder="Ваш e-mail/номер телефона"
+                type="text"
+                class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40"
+              />
+            </div>
+
+            <div class="mt-4">
+              <textarea
+                placeholder="Ваше сообщение"
+                type="text"
+                rows="8"
+                class="block w-full px-3 py-2 mt-2 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40"
+              ></textarea>
+            </div>
+
+            <div class="mt-4">
+              <h1 class="text-md font-medium text-black uppercase">Почта</h1>
+              <a
+                href="mailto:info@ttservices.az"
+                class="text-md font-medium text-ttservices"
+              >
+                info@ttservices.az
+              </a>
+              <h1 class="text-md font-medium text-black uppercase">Телефон</h1>
+              <a
+                href="tel: +994 55 555 55 55"
+                class="text-md font-medium text-ttservices"
+              >
+                +994 55 555 55 55
+              </a>
+              <h1 class="text-md font-medium text-black uppercase">
+                Мессенджер
+              </h1>
+              <a
+                href="https://web.whatsapp.com/"
+                class="text-md font-medium text-ttservices"
+              >
+                WhatsApp
+              </a>
+            </div>
+
+            <div class="flex justify-end mt-6">
+              <button
+                type="button"
+                class="px-3 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-500 rounded-md dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:bg-indigo-700 hover:bg-indigo-600 focus:outline-none focus:bg-indigo-500 focus:ring focus:ring-indigo-300 focus:ring-opacity-50"
+              >
+                Invite Member
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="src/js/carousel.js"></script>
+    <script type="text/javascript" src="src/js/navbar.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js"
+    ></script>
+  </body>
+</html>
