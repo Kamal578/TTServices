@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="dist/output.css" />
   </head>
   <body x-data="{isOpen: false}" class="bg-white">
+    <div class="loader">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <nav
       class="relative px-4 py-4 flex justify-between items-center bg-ttservices font-Inter text-2xl"
     >
@@ -268,6 +274,7 @@
         </div>
       </nav>
     </div>
+
     <div
       class="hero bg-cover bg-center flex justify-center items-center h-screen px-2 font-Exo bg-[url('../src/img/heroBackground.png')]"
     >
@@ -291,6 +298,9 @@
       </div>
     </div>
 
+    <h1 class="text-5xl font-bold text-center font-Exo text-ttservicesDark">
+      Наши услуги
+    </h1>
     <div
       class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mt-8 md:mt-12 px-4 xl:px-10 py-4 rounded-md bg-white"
     >
@@ -394,6 +404,44 @@
       </div>
       <!--End of servicesContainerCard 4-->
     </div>
+    <!--End of servicesContainer-->
+
+    <div
+      class="quality flex flex-col gap-3 justify-around items-center my-4 mx-4 md:flex-row font-Exo"
+    >
+      <div class="qualityImg max-w-[90vw]">
+        <img src="src/img/quality.png" alt="Quality" />
+      </div>
+      <div
+        class="qualityText my-4 flex flex-col justify-evenly gap-4 h-full px-5 md:w-1/2"
+      >
+        <div class="qualityTextMain">
+          <h1
+            class="text-3xl font-bold text-ttservicesDark leading-tight md:text-4xl"
+          >
+            Качественные пассажирские перевозки - наша профессиональная
+            ответственность
+          </h1>
+          <p class="text-base font-normal text-black mt-4 md:text-lg">
+            Компания "TT services" была основана в 2018 году командой
+            профессионалов с большим опытом в области пассажирских перевозок. За
+            прошедшие годы мы приняли участие в организации крупных,
+            общественно-культурных, спортивных и в других значимых мероприятиях
+            предоставляя различные транспортные услуги. Качество, надежность и
+            безопасность являются основными принципами нашей работы.
+          </p>
+        </div>
+        <a
+          href="#"
+          class="text-center w-40 ml-auto inline-block bg-ttservicesDark text-white py-3 px-4 rounded-lg text-lg md:py-4 md:px-5 md:text-xl md:rounded-lg md:w-2/5 mt-4 md:mt-0 no-underline transition duration-200 ease-in-out hover:bg-ttservices"
+        >
+          Читать Далее
+        </a>
+      </div>
+      <!--End of qualityText-->
+    </div>
+    <!--End of quality-->
+
     <div class="priorities px-4 sm:px-8 lg:px-16 font-Exo">
       <h1
         class="prioritiesTitle text-4xl sm:text-4xl font-bold text-ttservicesDark my-8 text-center"
@@ -453,12 +501,14 @@
     <!--End of priorities-->
     <div
       x-data="{ activeTab: 'tab1' }"
-      class="autopark bg-white py-10 font-Exo"
+      class="autopark bg-white mx-10 mb-10 font-Exo"
     >
       <div
         class="autoparkHeader container mx-auto flex flex-col md:flex-row justify-between items-center mb-8"
       >
-        <h1 class="md:3xl text-4xl font-bold text-center md:text-left mb-4 md:mb-0 text-ttservicesDark">
+        <h1
+          class="md:3xl text-4xl font-bold text-center md:text-left mb-4 md:mb-0 text-ttservicesDark"
+        >
           Наш автопарк
         </h1>
         <div class="autoparkHeaderButtonsContainer flex flex-row gap-4">
@@ -967,9 +1017,9 @@
       </div>
     </div>
     <!--End of autopark-->
-    <div class="tours flex flex-col items-center justify-evenly gap-10">
+    <div class="tours flex flex-col items-center justify-evenly gap-10 mx-10">
       <div
-        class="toursHeader w-89 container mx-auto flex flex-col md:flex-row justify-between items-center mb-2"
+        class="toursHeader w-89 container mx-auto flex flex-col gap-4 md:flex-row md:gap-0 justify-between items-center mb-2"
       >
         <h1 class="font-Exo font-bold text-ttservicesDark text-3xl text-center">
           Туры TT Services
@@ -986,13 +1036,13 @@
       </div>
       <!--End of toursHeader-->
       <div
-        class="toursCards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mt-8 mx-4"
+        class="toursCards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7 mt-8 mx-4"
       >
         <div
           class="toursCard bg-ttservicesLight rounded-lg flex flex-col items-center justify-between p-4"
         >
           <div
-            class="toursCardImg h-52 sm:h-64 md:h-72 lg:h-80 xl:h-96 bg-cover bg-center w-full"
+            class="toursCardImg h-[15vh] sm:h-[20vh] md:h-[25vh] bg-cover bg-center w-full"
             style="background-image: url(src/img/businessTaxi.png)"
           ></div>
           <div class="toursCardText text-center py-4">
@@ -1013,7 +1063,7 @@
             </p>
             <a
               href="#"
-              class="toursCardButton font-Exo font-bold text-lg text-white bg-ttservices border border-ttservices rounded-lg px-6 py-2 transition duration-200 ease-in-out hover:bg-ttservicesDark hover:border-ttservicesDark"
+              class="toursCardButton font-Exo font-bold text-base md:text-lg text-white bg-ttservices border border-ttservices rounded-lg px-6 py-2 transition duration-200 ease-in-out hover:bg-ttservicesDark hover:border-ttservicesDark"
               >Подробнее</a
             >
           </div>
@@ -1023,7 +1073,7 @@
           class="toursCard bg-ttservicesLight rounded-lg flex flex-col items-center justify-between p-4"
         >
           <div
-            class="toursCardImg h-52 sm:h-64 md:h-72 lg:h-80 xl:h-96 bg-cover bg-center w-full"
+            class="toursCardImg h-[15vh] sm:h-[20vh] md:h-[25vh] bg-cover bg-center w-full"
             style="background-image: url(src/img/businessTaxi.png)"
           ></div>
           <div class="toursCardText text-center py-4">
@@ -1054,7 +1104,7 @@
           class="toursCard bg-ttservicesLight rounded-lg flex flex-col items-center justify-between p-4"
         >
           <div
-            class="toursCardImg h-52 sm:h-64 md:h-72 lg:h-80 xl:h-96 bg-cover bg-center w-full"
+            class="toursCardImg h-[15vh] sm:h-[20vh] md:h-[25vh] bg-cover bg-center w-full"
             style="background-image: url(src/img/businessTaxi.png)"
           ></div>
           <div class="toursCardText text-center py-4">
@@ -1085,7 +1135,7 @@
           class="toursCard bg-ttservicesLight rounded-lg flex flex-col items-center justify-between p-4"
         >
           <div
-            class="toursCardImg h-52 sm:h-64 md:h-72 lg:h-80 xl:h-96 bg-cover bg-center w-full"
+            class="toursCardImg h-[15vh] sm:h-[20vh] md:h-[25vh] bg-cover bg-center w-full"
             style="background-image: url(src/img/businessTaxi.png)"
           ></div>
           <div class="toursCardText text-center py-4">
@@ -1392,10 +1442,10 @@
           >Посмотреть на карте</a
         >
       </div>
-      <div class="contacts bg-white text-ttservices py-8 px-4 md:px-12">
-        <div class="contactUsForm mt-8">
+      <div class="contacts bg-white text-ttservicesDark px-4 md:px-12">
+        <div class="contactUsForm">
           <div
-            class="contactUsFormTitle text-ttservices font-Exo text-2xl mb-4"
+            class="contactUsFormTitle font-bold font-Exo text-2xl mb-4"
           >
             <h2 class="text-4xl">Свяжитесь с нами</h2>
           </div>
@@ -1407,21 +1457,21 @@
                 <input
                   type="text"
                   placeholder="Ваше имя"
-                  class="name h-10 rounded-md bg-gray-100 w-full md:w-full px-2 font-Exo border-2 border-ttservices"
+                  class="name h-10 rounded-md bg-gray-100 w-full md:w-full px-2 font-Exo border-2 border-ttservicesDark"
                 />
                 <input
                   type="text"
                   placeholder="Ваш номер телефона"
-                  class="phone h-10 rounded-md bg-gray-100 w-full md:w-full px-4 font-Exo border-2 border-ttservices"
+                  class="phone h-10 rounded-md bg-gray-100 w-full md:w-full px-4 font-Exo border-2 border-ttservicesDark"
                 />
               </div>
               <textarea
                 placeholder="Ваше сообщение"
-                class="message h-48 rounded-md bg-gray-100 mt-4 px-4 py-2 font-Exo w-full border-2 border-ttservices"
+                class="message h-48 rounded-md bg-gray-100 mt-4 px-4 py-2 font-Exo w-full border-2 border-ttservicesDark"
               ></textarea>
               <button
                 type="submit"
-                class="sendButton bg-ttservices rounded-lg border-2 border-ttservices px-8 py-4 text-white font-Exo mt-4 transition-all ease-in-out duration-250 cursor-pointer hover:bg-ttservicesDark hover:text-white"
+                class="sendButton bg-ttservicesDark rounded-lg border-2 border-ttservicesDark px-8 py-4 text-white font-Exo mt-4 transition-all ease-in-out duration-250 cursor-pointer hover:bg-ttservices hover:text-white hover:border-ttservices"
               >
                 Отправить
               </button>

@@ -59,3 +59,14 @@ menuButton.addEventListener('click', () => {
         dropdownMenu.classList.toggle('hidden');
     }
 });
+
+// handle loader
+
+const loader = document.querySelector('.loader');
+const body = document.querySelector('body');
+body.style.overflow = 'hidden';
+
+window.addEventListener('load', function() {
+    loader.style.display = 'none';
+    body.style.overflow = 'auto';
+});

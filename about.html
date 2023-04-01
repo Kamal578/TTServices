@@ -8,8 +8,14 @@
     <link rel="stylesheet" href="dist/output.css" />
   </head>
   <body x-data="{isOpen: false}" class="bg-white">
+    <div class="loader">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <nav
-      class="relative px-4 py-4 flex justify-between items-center bg-ttservices font-Inter text-2xl"
+      class="relative z-10 px-4 py-4 flex justify-between items-center bg-ttservices font-Inter text-2xl"
     >
       <a class="leading-none" href="/">
         <img src="src/img/ttservices.png" alt="Logo" class="w-32" />
@@ -180,7 +186,7 @@
               >
             </li>
             <li class="mb-1">
-              <div class="relative inline-block text-left">
+              <div class="relative z-10 inline-block text-left">
                 <div>
                   <button
                     type="button"
@@ -294,7 +300,7 @@
         </p>
         <a
           href=""
-          class="text-ttservicesDark font-exo font-normal text-base md:text-lg text-left bg-ttservicesLight border border-ttservicesLight rounded-md py-2 px-4 transition duration-200 ease-in-out hover:bg-ttservicesDark hover:border-ttservicesDark hover:text-ttservicesLight"
+          class="text-white font-Exo font-normal text-base md:text-lg text-left bg-ttservicesDark border-ttservicesDark rounded-md py-2 px-4 transition-all hover:bg-ttservices hover:border-ttservices hover:text-white"
         >
           Связаться с нами
         </a>
@@ -494,7 +500,7 @@
     </div>
 
     <div
-      class="ourDrivers relative h-[90vh] backdrop-blur md:backdrop-blur-none bg-cover bg-center bg-[url('../src/img/ourDrivers.png')]"
+      class="m-10 mb-0 rounded-lg ourDrivers relative h-[80vh] backdrop-blur md:backdrop-blur-none bg-cover bg-center bg-[url('../src/img/ourDrivers.png')]"
     >
       <div class="logo absolute top-0 right-0 p-10 w-1/2 md:w-full">
         <img
@@ -672,9 +678,15 @@
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 2md:grid-cols-2 px-4 md:px-16 py-4 md:py-16 rounded-lg">
-        <div class="bg-center bg-cover h-[80vh] bg-[url('../src/img/participation.png')] rounded-lg"></div>
-        <div class="flex flex-col justify-between p-10 py-16 font-Exo text-white bg-ttservicesDark text-sm md:text-base 2md:text-xl lg:text-2xl rounded-xl ">
+      <div
+        class="grid grid-cols-1 2md:grid-cols-2 px-4 md:px-16 py-4 md:py-16 rounded-lg"
+      >
+        <div
+          class="bg-center bg-cover h-[80vh] bg-[url('../src/img/participation.png')] rounded-lg"
+        ></div>
+        <div
+          class="flex flex-col justify-between p-10 py-16 font-Exo text-white bg-ttservicesDark text-sm md:text-base 2md:text-xl lg:text-2xl rounded-xl"
+        >
           <p>
             Азербайджан неоднократно демонстрировал способность организовывать и
             проводить различные международные мероприятия на самом высоком
@@ -691,38 +703,64 @@
     </div>
 
     <div class="services flex flex-col md:flex-row mb-10 p-4">
+      <div
+        class="text-3xl md:text-5xl font-Exo font-bold text-ttservicesDark w-full md:w-[40%] mb-10"
+      >
+        Были предоставлены следующие услуги:
+      </div>
 
-        <div class="text-3xl md:text-5xl font-Exo font-bold text-ttservicesDark w-full md:w-[40%] mb-10">
-            Были предоставлены следующие услуги:
+      <div
+        class="services w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4 md:gap-8 xl:gap-12 items-center justify-center"
+      >
+        <div class="service relative flex items-center justify-center">
+          <img
+            src="src/img/services/service1.png"
+            alt=""
+            class="w-20 h-20 md:w-30 md:h-30 absolute left-0 -z-10"
+          />
+          <div
+            class="service-text w-3/4 md:w-1/2 font-Exo bg-white text-ttservicesDark font-bold text-2xl px-4 py-6 border-4 border-ttservicesDark rounded-lg"
+          >
+            Транспорт для PNA
+          </div>
         </div>
-
-        <div class="services w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4 md:gap-8 xl:gap-12 items-center justify-center">
-            <div class="service relative flex items-center justify-center">
-                <img src="src/img/services/service1.png" alt="" class="w-20 h-20 md:w-30 md:h-30 absolute left-0 -z-10">
-                <div class="service-text font-Exo bg-white text-ttservicesDark font-bold text-3xl px-4 py-6 border-4 border-ttservicesDark rounded-lg">
-                    Lorem Ipsum
-                </div> 
-            </div>
-            <div class="service relative flex items-center justify-center">
-                <img src="src/img/services/service2.png" alt="" class="w-20 h-20 md:w-30 md:h-30 absolute left-0 -z-10">
-                <div class="service-text font-Exo bg-white text-ttservicesDark font-bold text-3xl px-4 py-6 border-4 border-ttservicesDark rounded-lg">
-                    Lorem Ipsum
-                </div> 
-            </div>
-            <div class="service relative flex items-center justify-center">
-                <img src="src/img/services/service3.png" alt="" class="w-20 h-20 md:w-30 md:h-30 absolute left-0 -z-10">
-                <div class="service-text font-Exo bg-white text-ttservicesDark font-bold text-3xl px-4 py-6 border-4 border-ttservicesDark rounded-lg">
-                    Lorem Ipsum
-                </div> 
-            </div>
-            <div class="service relative flex items-center justify-center">
-                <img src="src/img/services/service4.png" alt="" class="w-20 h-20 md:w-30 md:h-30 absolute left-0 -z-10">
-                <div class="service-text font-Exo bg-white text-ttservicesDark font-bold text-3xl px-4 py-6 border-4 border-ttservicesDark rounded-lg">
-                    Lorem Ipsum
-                </div> 
-            </div>
+        <div class="service relative flex items-center justify-center">
+          <img
+            src="src/img/services/service2.png"
+            alt=""
+            class="w-20 h-20 md:w-30 md:h-30 absolute left-0 -z-10"
+          />
+          <div
+            class="service-text w-3/4 md:w-1/2 font-Exo bg-white text-ttservicesDark font-bold text-2xl px-4 py-6 border-4 border-ttservicesDark rounded-lg"
+          >
+            VIP транспорт
+          </div>
         </div>
-
+        <div class="service relative flex items-center justify-center">
+          <img
+            src="src/img/services/service3.png"
+            alt=""
+            class="w-20 h-20 md:w-30 md:h-30 absolute left-0 -z-10"
+          />
+          <div
+            class="service-text w-3/4 md:w-1/2 font-Exo bg-white text-ttservicesDark font-bold text-2xl px-4 py-6 border-4 border-ttservicesDark rounded-lg"
+          >
+            Транспорт для сотрудников AFFA
+          </div>
+        </div>
+        <div class="service relative flex items-center justify-center">
+          <img
+            src="src/img/services/service4.png"
+            alt=""
+            class="w-20 h-20 md:w-30 md:h-30 absolute left-0 -z-10"
+          />
+          <div
+            class="service-text w-3/4 md:w-1/2 font-Exo bg-white text-ttservicesDark font-bold text-2xl px-4 py-6 border-4 border-ttservicesDark rounded-lg"
+          >
+            Транспорт для целевых групп 
+          </div>
+        </div>
+      </div>
     </div>
 
     <div
