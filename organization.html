@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="dist/output.css" />
   </head>
   <body x-data="{isOpen: false}" class="bg-white">
+    <div class="loader">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <nav
       class="relative px-4 py-4 flex justify-between items-center bg-ttservices font-Inter text-2xl"
     >
@@ -625,22 +631,58 @@
 
     <!--Gallery, incomplete for now-->
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4"
-      x-data="{ isOpen: false, currentImage: '' }"
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4"
+    x-data="{ isOpen: false, currentImage: '', images: [
+        { src: 'src/img/gallery/galleryImage1.png', alt: 'Image 1' },
+        { src: 'src/img/gallery/galleryImage2.png', alt: 'Image 2' },
+        { src: 'src/img/gallery/galleryImage3.png', alt: 'Image 3' },
+        { src: 'src/img/gallery/galleryImage4.png', alt: 'Image 4' },
+        { src: 'src/img/gallery/galleryImage5.png', alt: 'Image 5' },
+        { src: 'src/img/gallery/galleryImage6.png', alt: 'Image 6' },
+        { src: 'src/img/gallery/galleryImage7.png', alt: 'Image 7' },
+        { src: 'src/img/gallery/galleryImage8.png', alt: 'Image 8' }
+    ] }"
+  >
+    <!-- Gallery items -->
+    <template x-for="(image, index) in images" :key="index">
+      <div
+        class="p-2 cursor-pointer"
+        x-on:click="isOpen = true; currentImage = image"
+      >
+        <img
+          :src="image.src"
+          :alt="image.alt"
+          class="object-cover w-full h-full rounded-md shadow-md"
+        />
+      </div>
+    </template>
+  
+    <!-- Modal dialog -->
+    <div
+      class="fixed inset-0 z-50 flex items-center justify-center overflow-auto bg-black bg-opacity-75"
+      x-show="isOpen"
+      x-on:keydown.escape.window="isOpen = false"
     >
-      <!-- Gallery items -->
-      <template x-for="(image, index) in images" :key="index">
-        <div
-          class="p-2 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 cursor-pointer"
-          x-on:click="isOpen = true; currentImage = image"
-        >
-          <img
-            :src="image.src"
-            class="object-cover w-full h-full rounded-md shadow-md"
-          />
+    
+      <div class="w-full max-w-lg mx-auto p-4 bg-white rounded-md shadow-lg">
+        <div class="mt-4 flex justify-between">
+          <button
+            class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md"
+            x-on:click="isOpen = false"
+          >
+            Close
+          </button>
         </div>
-      </template>
+        <img
+          :src="currentImage.src"
+          :alt="currentImage.alt"
+          class="object-contain w-full h-96"
+        />
+
+      </div>
     </div>
+  </div>
+  
 
     <footer class="flex flex-col">
       <div
@@ -868,14 +910,14 @@
     <script type="text/javascript" src="src/js/navbar.js"></script>
     <script>
       const images = [
-        { src: "src/img/gallery/galleryImage1.png" },
-        { src: "src/img/gallery/galleryImage2.png" },
-        { src: "src/img/gallery/galleryImage3.png" },
-        { src: "src/img/gallery/galleryImage4.png" },
-        { src: "src/img/gallery/galleryImage5.png" },
-        { src: "src/img/gallery/galleryImage6.png" },
-        { src: "src/img/gallery/galleryImage7.png" },
-        { src: "src/img/gallery/galleryImage8.png" },
+        { src: 'src/img/gallery/galleryImage1.png', alt: 'Image 1' },
+        { src: 'src/img/gallery/galleryImage2.png', alt: 'Image 2' },
+        { src: 'src/img/gallery/galleryImage3.png', alt: 'Image 3' },
+        { src: 'src/img/gallery/galleryImage4.png', alt: 'Image 4' },
+        { src: 'src/img/gallery/galleryImage5.png', alt: 'Image 5' },
+        { src: 'src/img/gallery/galleryImage6.png', alt: 'Image 6' },
+        { src: 'src/img/gallery/galleryImage7.png', alt: 'Image 7' },
+        { src: 'src/img/gallery/galleryImage8.png', alt: 'Image 8' }
       ];
 
       function getNextImageIndex(currentImage) {

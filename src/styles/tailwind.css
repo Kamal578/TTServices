@@ -206,3 +206,8 @@ text-align: center;
   }
 
 }
+
+.navbar-menu{
+  max-width: 0; /* set initial height to 0 */
+  transition: max-width 0.3s ease-out; /* add transition */
+}
